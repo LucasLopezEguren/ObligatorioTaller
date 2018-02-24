@@ -15,11 +15,11 @@
                 <h1>Alta de Usuarios</h1>
                 <form method="POST" action="actualizoUsuario.php">
                     <input type="hidden" name="usuId" id="usuId" value="{$usuario['usuId']}">
-                    Usuario: <input type="text" id="usuUsuario" name="usuUsuario" value="{$usuario['usuUsuario']}"/>
-                    <br>
-                    Clave: <input type="password" id="usuClave" name="usuClave" value="{$usuario['usuClave']}"/>
+                    Nombre: <input type="text" id="usuNombre" name="usuNombre" value="{$usuario['usuUsuario']}"/>
                     <br>
                     Correo: <input type="text" id="usuCorreo" name="usuCorreo" value="{$usuario['usuCorreo']}"/>
+                    <br>
+                    Clave: <input type="password" id="usuClave" name="usuClave" value="{$usuario['usuClave']}"/>
                     <br>
                     <input type="submit" value="Modificar Usuario">
                 </form>

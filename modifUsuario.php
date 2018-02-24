@@ -14,7 +14,7 @@ $usuId = (int)$_GET['id'];
 //veo que puedo conectarme a la BD
 if($conn->conectar()){
     //armo la SQL
-    $sql = "SELECT * FROM Usuarios WHERE usuId = :id";
+    $sql = "SELECT * FROM Usuarios WHERE id = :id";
     //cargo los parametros para la sql
     $parametros = array();
     $parametros[0] = array("id",$usuId,"int");

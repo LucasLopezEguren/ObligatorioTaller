@@ -13,7 +13,7 @@ else{
     //creo una instancia de conexion
     $conn = new ConexionBD(MOTOR, SERVIDOR, BASEDATOS, USUARIOBASE, CLAVEBASE);
 
-    $usuUsuario = $_POST['usuUsuario'];
+    $usuNombre = $_POST['usuNombre'];
     $usuClave = $_POST['usuClave'];
     $usuCorreo = $_POST['usuCorreo'];
     $usuId = (int)$_POST['usuId'];
@@ -21,12 +21,12 @@ else{
     //veo que puedo conectarme a la BD
     if($conn->conectar()){
         //armo la SQL
-        $sql = "UPDATE Usuarios SET usuUsuario = :usu, usuClave = :cla,";
-        $sql .= " usuCorreo = :corr WHERE usuId=:id";
+        $sql = "UPDATE Usuarios SET nombre = :nom, password = :cla,";
+        $sql .= " email = :corr WHERE id=:id";
 
         //cargo los parametros para la sql
         $parametros = array();
-        $parametros[0] = array("usu",$usuUsuario,"string");
+        $parametros[0] = array("nom",$usuNombre,"string");
         $parametros[1] = array("cla",md5($usuClave),"string");
         $parametros[2] = array("corr",$usuCorreo,"string");
         $parametros[3] = array("id",$usuId,"int");
