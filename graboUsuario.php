@@ -13,21 +13,21 @@ else{
     //creo una instancia de conexion
     $conn = new ConexionBD(MOTOR, SERVIDOR, BASEDATOS, USUARIOBASE, CLAVEBASE);
 
-    $usuUsuario = $_POST['usuUsuario'];
+    $usuUsuario = $_POST['usuNombre'];
     $usuClave = $_POST['usuClave'];
     $usuCorreo = $_POST['usuCorreo'];
 
     //veo que puedo conectarme a la BD
     if($conn->conectar()){
         //armo la SQL
-        $sql = "INSERT INTO Usuarios (usuUsuario, usuClave, usuCorreo, usuFecCre)";
-        $sql .= " VALUES (:usu, :cla, :corr, now())";
+        $sql = "INSERT INTO Usuarios (nombre, email, password)";
+        $sql .= " VALUES (:nom, :email, :pass)";
 
         //cargo los parametros para la sql
         $parametros = array();
-        $parametros[0] = array("usu",$usuUsuario,"string");
-        $parametros[1] = array("cla",md5($usuClave),"string");
-        $parametros[2] = array("corr",$usuCorreo,"string");
+        $parametros[0] = array("nom",$usuUsuario,"string");
+        $parametros[1] = array("email",$usuCorreo,"string");
+        $parametros[2] = array("pass",md5($usuClave),"string");
         //ejecuto la consulta
         if($conn->consulta($sql,$parametros)){
             header("Location: admUsuarios.php");
