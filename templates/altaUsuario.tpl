@@ -26,15 +26,24 @@
                 <table>
                     <tr>
                         <td>Nombre: </td>
-                        <td><input type="text"  class="noVoid" id="usuNombre" name="usuNombre"/><br><div id="errcvNombre" class="mensaje"></div></td> 							
+                        <td><input type="text" id="usuNombre" class="noVoid" name="usuNombre"/></td> 							
+                    </tr>
+                    <tr>
+                        <td><div id="errusuNombre" class="mensaje"></br></div></td>
                     </tr>
                     <tr>
                         <td>Correo/Nombre de usuario:</td>
-                        <td><input type="text" id="usuCorreo" class="noVoid" name="usuCorreo"/><br><div id="errcvEdad" class="mensaje"></div></td> 
+                        <td><input type="text" id="usuCorreo" class="noVoid" name="usuCorreo"/></td> 
+                    </tr>
+                    <tr>
+                        <td><div id="errusuCorreo" class="mensaje"></br></div></td>
                     </tr>
                     <tr>
                         <td>Password:</td>
-                        <td><input type="password" class="noVoid" id="usuClave" name="usuClave"/><br><div id="errcvApellido" class="mensaje"></div></td> 
+                        <td><input type="password" class="noVoid" id="usuClave" name="usuClave"/></td>
+                    </tr>
+                    <tr>
+                        <td><div id="errusuClave" class="mensaje"></br></div></td>
                     </tr>
                     <tr>
                         <td>Sexo:</td>
