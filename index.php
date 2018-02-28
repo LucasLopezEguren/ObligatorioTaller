@@ -12,6 +12,6 @@ require_once("includes/libs/Smarty.class.php");
     //TODO
     $smarty->assign("usuario",$_SESSION['usuario']);
     
-    $smarty->display("privada.tpl");
+    $smarty->display("index.tpl");
  
 ?>
