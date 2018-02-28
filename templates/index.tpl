@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Mi primer APP</title>
+        <title>Mascotas APP</title>
     </head>
     <body>
         {include file="cabezal.tpl"}

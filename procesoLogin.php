@@ -10,6 +10,7 @@ $conn = new ConexionBD(MOTOR, SERVIDOR, BASEDATOS, USUARIOBASE, CLAVEBASE);
 
 $usuario = $_POST['txtUsuario'];
 $clave = $_POST['txtClave'];
+//$loged;
 
 //veo que puedo conectarme a la BD
 if($conn->conectar()){

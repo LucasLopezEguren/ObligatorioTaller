@@ -16,7 +16,6 @@ $(".noVoid").blur(function(){
 $(".isNum").blur(function(){
 	esNum($(this).attr("id"));
 });
-$("#regSol").click(regSoli);
 $(".btn").mouseover(mouseIn);
 $(".btn").mouseout(mouseOut);
 }
