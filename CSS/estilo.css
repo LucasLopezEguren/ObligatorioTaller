@@ -1,0 +1,74 @@
+.error{
+	color: red;
+	font-size: 12px;
+}
+.mensaje{
+	width: 200px;
+	height: 20px;
+}
+#principal{
+	background-color: #999999;
+	margin: auto;
+	width:920px;
+	height: 1000px;
+}
+#menuBarra{
+	width: 920px;
+	height: 60px;
+	background-color: #228822;
+}
+#home{	
+	width: 60px;
+	height: 60px;
+	background-color: #228822;
+}
+#cabezal{
+	background-color: #228822;
+	height:100px;
+	width:920px;
+}
+#title{
+	position: relative;
+	top:40px;
+}
+#homediv img{
+	border: solid black 2px;	
+	border-radius:10px;
+	margin:10px 20px;
+	width: 240px;
+	height: 240px
+}
+.btn{	
+	border: solid transparent 2px;	
+	border-radius:10px;
+	width: 150px;
+	height: 30px
+}
+.izq{
+	float:left;
+}
+.der{
+	float:right;
+}
+#lista{
+	list-style: none;
+}
+#fondo{
+	padding:20px;
+	background-image: url('../img/fondo.jpg');
+    width:880px;
+	height: 980px;
+}
+.menus{
+	float:left;
+    width:880px;
+	height: 1000px;
+}
+.registros{	
+	padding: 5px;
+	width: 450px;
+}
+#logo{
+	width: 120px;
+	height: 120px
+}
