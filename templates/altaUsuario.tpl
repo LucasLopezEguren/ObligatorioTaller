@@ -14,8 +14,6 @@
     </head>
     <body>
         {include file="cabezal.tpl"}
-        
-        
         <div style="float: left">
             {include file="menu.tpl"}
         </div>
@@ -54,7 +52,7 @@
                         <td><input type="radio" name="cvGender" id="cvFemale"> Femenino</td> 
                     </tr>
                 </table>
-                 <input type="submit" value="Agregar Usuario">
+                <input type="submit" value="Agregar Usuario">
             </form>
         </div>
     </body>
