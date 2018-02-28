@@ -28,7 +28,7 @@ if($conn->conectar()){
             $_SESSION['ingreso'] = true;
             $_SESSION['usuario'] = $usuario;
             setcookie("txtUsu",$usuario,time()+(60*60*24));
-            header("Location: privada.php");
+            header("Location: index.php");
         }
         else{
             $_SESSION['ingreso'] = false; 
