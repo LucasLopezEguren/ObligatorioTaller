@@ -2,7 +2,7 @@
     <tr>
         <td>
         <img src="imagenes/logo.png" width="50px"/>
-        Mi Empresa S.A.
+        MascotasPerdidas S.A.
         </td>
         <td align="rigth">
             <small>Usuario: <i>{$usuario}</i></small>

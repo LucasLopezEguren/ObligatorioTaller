@@ -1,21 +1,59 @@
+<?php
+/* Smarty version 3.1.30, created on 2018-02-28 03:14:46
+  from "/var/www/Obligatorio/templates/altaUsuario.tpl" */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.30',
+  'unifunc' => 'content_5a961ea6c54551_44942276',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '126c7eacd7ebdf02510c95c6a92b25e780465bce' => 
+    array (
+      0 => '/var/www/Obligatorio/templates/altaUsuario.tpl',
+      1 => 1519787624,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:cabezal.tpl' => 1,
+    'file:menu.tpl' => 1,
+  ),
+),false)) {
+function content_5a961ea6c54551_44942276 (Smarty_Internal_Template $_smarty_tpl) {
+?>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>Mascotas APP</title>
-        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>            
-        <script type="text/javascript" src="js/admUsuarios.js"></script>     
+        <?php echo '<script'; ?>
+ type="text/javascript" src="js/jquery-3.3.1.min.js"><?php echo '</script'; ?>
+>            
+        <?php echo '<script'; ?>
+ type="text/javascript" src="js/admUsuarios.js"><?php echo '</script'; ?>
+>     
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script type="text/javascript" src="js/jquery-2.0.3.js"></script>
-        <script type="text/javascript" src="js/jquery.js"></script>
+        <?php echo '<script'; ?>
+ type="text/javascript" src="js/jquery-2.0.3.js"><?php echo '</script'; ?>
+>
+        <?php echo '<script'; ?>
+ type="text/javascript" src="js/jquery.js"><?php echo '</script'; ?>
+>
         <meta name="Keywords" content="palabras claves">
         <meta name="Description" content="este sitio esta creado para las mascotas perdidas">
         <meta name="Author" content="Lucas Lopez - Luca Miraglia">
         <link rel="stylesheet" type="text/css" href="CSS/estilo.css">
     </head>
     <body>
-        {include file="cabezal.tpl"}
+        <?php $_smarty_tpl->_subTemplateRender("file:cabezal.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
         <div style="float: left">
-            {include file="menu.tpl"}
+            <?php $_smarty_tpl->_subTemplateRender("file:menu.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
         </div>
         <div style="float: right; align-content: center" class="registros" class="izq">
             <p class="izq">Para registrarse por favor llene el siguiente formulario: </p>
@@ -48,3 +86,5 @@
         </div>
     </body>
 </html>
+<?php }
+}
