@@ -1,11 +1,5 @@
 <?php
 session_start();
-
-if(!$_SESSION['ingreso'] || $_SESSION['usuario']!="admin"){
-    $_SESSION['mensaje'] = "Debe registrarse para acceder al área privada";
-    header("Location: index.php");
-}
-else{
     //agrego la clase de conexion a la BD
     require_once("includes/class.Conexion.BD.php");
     require_once("config/configuracion.php");
@@ -39,5 +33,4 @@ else{
     else{
         echo "Error de Conexión " . $conn->ultimoError();
     }
-}
 ?>
