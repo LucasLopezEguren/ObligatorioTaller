@@ -37,7 +37,7 @@ $respuesta = array();
             $sql .= " FROM Publicaciones";
             $sql .= " WHERE (titulo LIKE '%" . $filtro . "%' OR ";
             $sql .= " descripcion LIKE '%" . $filtro . "%') and";
-            $sql .= " tipo LIKE '" . $estado . "'";
+            $sql .= " tipo LIKE '%" . $estado . "%'";
             $sql .= " LIMIT :ini, :cant";
 
             $parametros = array();
