@@ -92,14 +92,16 @@ function cargoFilas(datos){
         $("#publicaciones").empty();
         publicaciones = datos["data"];
         largo = publicaciones.length-1;
-        for(pos = 0; pos <= largo; pos++){
-            publicaciones = publicaciones[pos];
+        for(pos = 0; pos <= largo; pos=pos+1){
+            publicacion = publicaciones[pos];
             fila = "<tr>";
-            fila += "<td>" + publicaciones['titulo'] + "</td>";
-            fila += "<td>" + publicaciones['descripcion'] + "</td>";
+            fila += "<td class='celdaPublicacionesTitulo'>" + publicacion['titulo'] + "</td>";
+            fila += "<td class='celdaPublicacionesDesc'>" + publicacion['descripcion'] + "</td>";
             fila += "</tr>";
+            
             $("#publicaciones").append(fila);
-        }
+        }        
+        $("#pagActual").html("<b>" + pagina + "/" + ultPag + "</b>")
     }
     else{
         alert(datos['mensaje']);

@@ -26,20 +26,21 @@ $respuesta = array();
                     
             $inicio = ($pagina -1) * CANTXPAG;
             
-            $sql = "SELECT titulo, descripcion";
+            $sql = "SELECT titulo, LEFT(descripcion,150) descripcion";
             $sql .= " FROM Publicaciones";
 //           $sql .= " WHERE Usuarios.deptoId = Departamentos.deptoId";
 //            $sql .= " AND Usuarios.locId = Localidades.locId";
 //            $sql .= " AND (usuUsuario LIKE '%" . $filtro . "%' OR ";
 //            $sql .= " usuCorreo LIKE '%" . $filtro . "%')";
-//            $sql .= " LIMIT :ini, :cant";
+            $sql .= " LIMIT :ini, :cant";
 
             $parametros = array();
             $parametros[0] = array("ini",$inicio,"int",0);
             $parametros[1] = array("cant",CANTXPAG,"int",0);
 
             if($conn->consulta($sql, $parametros)){
-                $listadoPublicaciones = $conn->restantesRegistros();                        
+                $listadoPublicaciones = $conn->restantesRegistros();  
+                
 
                 $respuesta['estado'] = "OK";
                 $respuesta['totPaginas'] =  $cantPags;

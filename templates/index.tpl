@@ -12,7 +12,7 @@
             {include file="menu.tpl"}
         </div>
         <div style="float: left;" align-content: center>
-            <h1>Bienvenido a Mascotas APP</h1>
+            <h1>Bienvenido</h1>
             <div style="float: left;" align-content: center>
                 <h3>Publicaciones</h3>
                 <br>
@@ -31,11 +31,12 @@
                 </table>
                 <input type="button" value="PRIMERO" id="btnINI">
                 <input type="button" value="ANTERIOR" id="btnANT">
-                <input type="button" value="1" class="irPagina">
                 <span id="pagActual"></span>
-                <input type="button" value="3" class="irPagina">
                 <input type="button" value="SIGUIENTE" id="btnSIG">
                 <input type="button" value="ÚLTIMO" id="btnFIN">
+            <script type="text/javascript">
+                var cantidadXpagina = {$smarty.const.CANTXPAG};
+            </script>
             </div>
         </div>
     </body>

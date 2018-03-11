@@ -2,6 +2,14 @@
 	color: red;
 	font-size: 12px;
 }
+.celdaPublicacionesTitulo{
+    width: 100px;
+    height: 70px;
+}
+.celdaPublicacionesDesc{
+    width: 400px;
+    height: 70px;
+}
 .mensaje{
 	width: 200px;
 	height: 20px;
