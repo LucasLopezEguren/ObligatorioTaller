@@ -16,23 +16,23 @@ function inicializo(){
 
 function aplicarFiltro(){
     pagina=1;
-    traigoUsuarios(pagina);
+    traigoPublicaciones(pagina);
 }
 
 function irPaginaNro(){
     var pag = $(this).val();
     pagina = pag;
-    traigoUsuarios(pagina);
+    traigoPublicaciones(pagina);
 }
 
 function primeraPagina(){
     pagina = 1;
-    traigoUsuarios(pagina);
+    traigoPublicaciones(pagina);
 }
 
 function ultimaPagina(){
     pagina = ultPag;
-    traigoUsuarios(pagina);
+    traigoPublicaciones(pagina);
 }
 
 function anteriorPagina(){
@@ -42,7 +42,7 @@ function anteriorPagina(){
     else{
         pagina = ultPag;
     }
-    traigoUsuarios(pagina);
+    traigoPublicaciones(pagina);
 }
 
 function siguientePagina(){
@@ -52,7 +52,7 @@ function siguientePagina(){
     else{
         pagina = 1;
     }
-    traigoUsuarios(pagina);
+    traigoPublicaciones(pagina);
 }
 
 
@@ -73,12 +73,12 @@ function procesoAlta(){
 }
 
 function cargoUsuarios(){
-    traigoUsuarios(pagina);
+    traigoPublicaciones(pagina);
 }
 
-function traigoUsuarios(pagina){
+function traigoPublicaciones(pagina){
     $.ajax({
-        url: "traigoUsuarios.php",
+        url: "traigoPublicaciones.php",
         type: "POST",
         dataType: "json",
         data: "pagina=" + pagina + "&filtro=" + $("#txtFiltro").val(),
@@ -87,37 +87,19 @@ function traigoUsuarios(pagina){
 }
 
 function cargoFilas(datos){
-    var lineas = 1;
     if(datos['estado'] == "OK"){
         ultPag = datos['totPaginas'];
-        $("#usuarios").empty();
-        usuarios = datos["data"];
-        for(pos = 0; pos <= usuarios.length-1; pos++){
-            usuario = usuarios[pos];
+        $("#publicaciones").empty();
+        publicaciones = datos["data"];
+        largo = publicaciones.length-1;
+        for(pos = 0; pos <= largo; pos++){
+            publicaciones = publicaciones[pos];
             fila = "<tr>";
-            fila += "<td>" + usuario['usuUsuario'] + "</td>";
-            fila += "<td>" + usuario['usuCorreo'] + "</td>";
-            fila += "<td>" + usuario['deptoNom'] + "</td>";
-            fila += "<td>" + usuario['locNom'] + "</td>";
-            foto = usuario['usuFoto'];
-            if(usuario['usuFoto'] == ""){
-                foto = "imagenes/vacio.png";
-            }
-            fila += "<td><img src='" + foto + "' width='40px'></td>";
-            fila += "<td>";
-            fila += "<input type='button' class='borrar' value='Borrar' alt='" + usuario['usuId'] +"'>";
-            fila += "<input type='button' class='modif' value='Modificar' alt='" + usuario['usuId'] +"'>";
-            fila += "</td>";
+            fila += "<td>" + publicaciones['titulo'] + "</td>";
+            fila += "<td>" + publicaciones['descripcion'] + "</td>";
             fila += "</tr>";
-            $("#usuarios").append(fila);
-            lineas++;
+            $("#publicaciones").append(fila);
         }
-        for(pos=lineas; pos<=cantidadXpagina; pos++){
-            $("#usuarios").append("<tr><td colspan='6'>&nbsp;</td></tr>");
-        }
-        $("#pagActual").html("<b>" + pagina + "/" + ultPag + "</b>")
-        $(".borrar").click(procesoBorrar);
-        $(".modif").click(procesoModif);
     }
     else{
         alert(datos['mensaje']);

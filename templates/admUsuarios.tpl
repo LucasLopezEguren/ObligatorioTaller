@@ -11,8 +11,9 @@
         <div style="float: left">
             {include file="menu.tpl"}
         </div>
-        <div style="float: right; align-content: center">
-                <h1>Administracion de Usuarios</h1>
+        <div style="float: left;" align-content: center>
+            <h1>Administracion de Usuarios</h1>
+            <div style="float: left;" align-content: center>
                 <input type="button" id="alta" value="Agregar Usuario">
                 <br>
                 <table>
@@ -34,6 +35,7 @@
                         </tr>                        
                     {/foreach}
                 </table>
+            </div>
         </div>
     </body>
 </html>
