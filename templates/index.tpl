@@ -7,7 +7,6 @@
     </head>
     <body>
         {include file="cabezal.tpl"}
-        
         <div style="float: left">
             {include file="menu.tpl"}
         </div>
@@ -16,9 +15,24 @@
             <div style="float: left;" align-content: center>
                 <h3>Publicaciones</h3>
                 <br>
-                Buscar: <input type="text" id="txtFiltro"/>
+                Buscar: <input type="text" id="txtFiltro"/>                 
                 <input type="button" value="Filtrar" id="btnFiltrar"/>
-                <br/>
+                <br>
+                <select id="cboxEspecie" nombre="cboxEspecie">
+                    <option value="" >Cualquier especie</option>
+                    {foreach from=$especies item=especie}
+                        <option value="{$especie['id']}" >{$especie['nombre']}</option>
+                    {/foreach}
+                </select>
+                <select id="cboxRaza">
+                    <option value="" >Cualquier raza</option>
+                </select>
+                <select id="cboxEstado">
+                    <option >Cualquier estado</option>
+                    <option value="E" >Encontrado</option>
+                    <option value="P" >Perdido</option>
+                </select>
+                <br>
                 <table>
                     <thead>
                         <tr>

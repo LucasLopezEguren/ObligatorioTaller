@@ -6,6 +6,7 @@ require_once("includes/class.Conexion.BD.php");
 require_once("config/configuracion.php");
 
 $filtro = $_POST['filtro'];
+$estado = $_POST['estado'];
 $pagina = (int)$_POST['pagina'];
 if($pagina <= 0 ){
     $pagina = 1;
@@ -15,8 +16,13 @@ $respuesta = array();
    
     $conn = new ConexionBD(MOTOR, SERVIDOR, BASEDATOS, USUARIOBASE, CLAVEBASE);
     if($conn->conectar()){
-        $sql = "SELECT count(titulo) Total";
-        $sql .= " FROM Publicaciones";
+        $sql = "SELECT count(titulo) Total, LEFT(descripcion,150) descCorta, descripcion,";
+            $sql .= " tipo, especie_id, raza_id, barrio_id, usuario_id, titulo";
+            $sql .= " FROM Publicaciones";
+            $sql .= " WHERE (titulo LIKE '%" . $filtro . "%' OR ";
+            $sql .= " descripcion LIKE '%" . $filtro . "%') and";
+            $sql .= " tipo LIKE '%" . $estado . "%'";
+            
         $parametros = array();
 
         if($conn->consulta($sql, $parametros)){        
@@ -26,12 +32,12 @@ $respuesta = array();
                     
             $inicio = ($pagina -1) * CANTXPAG;
             
-            $sql = "SELECT titulo, LEFT(descripcion,150) descripcion";
+            $sql = "SELECT titulo, LEFT(descripcion,150) descCorta, descripcion,";
+            $sql .= " tipo, especie_id, raza_id, barrio_id, usuario_id";
             $sql .= " FROM Publicaciones";
-//           $sql .= " WHERE Usuarios.deptoId = Departamentos.deptoId";
-//            $sql .= " AND Usuarios.locId = Localidades.locId";
-//            $sql .= " AND (usuUsuario LIKE '%" . $filtro . "%' OR ";
-//            $sql .= " usuCorreo LIKE '%" . $filtro . "%')";
+            $sql .= " WHERE (titulo LIKE '%" . $filtro . "%' OR ";
+            $sql .= " descripcion LIKE '%" . $filtro . "%') and";
+            $sql .= " tipo LIKE '" . $estado . "'";
             $sql .= " LIMIT :ini, :cant";
 
             $parametros = array();

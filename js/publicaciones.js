@@ -4,14 +4,13 @@ var pagina = 1;
 var ultPag = 0;
 
 function inicializo(){
-    $("#alta").click(procesoAlta);
     $("#btnANT").click(anteriorPagina);
     $("#btnSIG").click(siguientePagina);
     $("#btnINI").click(primeraPagina);
     $("#btnFIN").click(ultimaPagina);
     $(".irPagina").click(irPaginaNro);
     $("#btnFiltrar").click(aplicarFiltro);
-    cargoUsuarios();
+    cargoPublicaciones();
 }
 
 function aplicarFiltro(){
@@ -56,23 +55,7 @@ function siguientePagina(){
 }
 
 
-function procesoModif(){
-    var usuId = $(this).attr("alt");
-    window.location = "modifUsuario.php?id=" + usuId;
-}
-
-function procesoBorrar(){
-    var usuId = $(this).attr("alt");
-    if(confirm("Desea borrar el usuario seleccionado?")){
-        window.location = "borroUsuario.php?id=" + usuId;
-    }
-}
-
-function procesoAlta(){
-    window.location = "altaUsuario.php";
-}
-
-function cargoUsuarios(){
+function cargoPublicaciones(){
     traigoPublicaciones(pagina);
 }
 
@@ -81,12 +64,13 @@ function traigoPublicaciones(pagina){
         url: "traigoPublicaciones.php",
         type: "POST",
         dataType: "json",
-        data: "pagina=" + pagina + "&filtro=" + $("#txtFiltro").val(),
+        data: "pagina=" + pagina + "&filtro=" + $("#txtFiltro").val() + "&estado=" + $("#cboxEstado").val(),
         success: cargoFilas
     });    
 }
 
 function cargoFilas(datos){
+    var lineas = 1;
     if(datos['estado'] == "OK"){
         ultPag = datos['totPaginas'];
         $("#publicaciones").empty();
@@ -96,11 +80,15 @@ function cargoFilas(datos){
             publicacion = publicaciones[pos];
             fila = "<tr>";
             fila += "<td class='celdaPublicacionesTitulo'>" + publicacion['titulo'] + "</td>";
-            fila += "<td class='celdaPublicacionesDesc'>" + publicacion['descripcion'] + "</td>";
+            fila += "<td class='celdaPublicacionesDesc'>" + publicacion['descCorta'] + "</td>";
             fila += "</tr>";
             
             $("#publicaciones").append(fila);
-        }        
+         lineas++;
+        }
+        for(pos=lineas; pos<=2; pos++){
+            $("#publicaciones").append("<td class='celdaPublicacionesTitulo'></td>");
+        }
         $("#pagActual").html("<b>" + pagina + "/" + ultPag + "</b>")
     }
     else{
