@@ -10,7 +10,34 @@ function inicializo(){
     $("#btnFIN").click(ultimaPagina);
     $(".irPagina").click(irPaginaNro);
     $("#btnFiltrar").click(aplicarFiltro);
+    $("#cboxEspecie").change(cargarRazas);
     cargoPublicaciones();
+}
+
+function cargarRazas(){
+    $.ajax({
+        url: "traigoRazas.php",
+        type: "POST",
+        dataType: "json",
+        data: "&especie=" + $("#cboxEspecie").val(),
+        success: procesoRazas
+    });
+}
+
+function procesoRazas(datos){
+    if(datos['estado']=="OK"){
+        razas = datos['data'];
+        $("#cboxRaza").empty();
+        $("#cboxRaza").append("<option value='%'>Cualquier raza</option>")
+        for(pos=0; pos<=razas.length-1; pos++){
+            raza = razas[pos];
+            $("#cboxRaza").append("<option value='" + raza['id'] + "'>" + raza['nombre'] + "</option>")
+        }  
+    }
+    else{
+        alert(datos['mensaje']);
+    }
+
 }
 
 function aplicarFiltro(){
@@ -64,7 +91,10 @@ function traigoPublicaciones(pagina){
         url: "traigoPublicaciones.php",
         type: "POST",
         dataType: "json",
-        data: "pagina=" + pagina + "&filtro=" + $("#txtFiltro").val() + "&estado=" + $("#cboxEstado").val(),
+        data: "pagina=" + pagina + "&filtro=" + $("#txtFiltro").val() + 
+                "&estado=" + $("#cboxEstado").val() +
+                "&especie=" + $("#cboxEspecie").val() +
+                "&raza=" + $("#cboxRaza").val(),
         success: cargoFilas
     });    
 }

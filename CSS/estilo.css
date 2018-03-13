@@ -5,14 +5,16 @@
 .celdaPublicacionesTitulo{
     width: 100px;
     height: 70px;
+    border: black 5px solid;
 }
 .celdaPublicacionesDesc{
     width: 400px;
-    height: 70px;
+    height: 70px;    
+    border: black 5px solid;
 }
 .mensaje{
-	width: 200px;
-	height: 20px;
+    width: 200px;
+    height: 20px;
 }
 #principal{
 	background-color: #999999;

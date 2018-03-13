@@ -19,16 +19,16 @@
                 <input type="button" value="Filtrar" id="btnFiltrar"/>
                 <br>
                 <select id="cboxEspecie" nombre="cboxEspecie">
-                    <option value="" >Cualquier especie</option>
+                    <option value="%" >Cualquier especie</option>
                     {foreach from=$especies item=especie}
                         <option value="{$especie['id']}" >{$especie['nombre']}</option>
                     {/foreach}
                 </select>
                 <select id="cboxRaza">
-                    <option value="" >Cualquier raza</option>
+                    <option value="%" >Cualquier raza</option>
                 </select>
                 <select id="cboxEstado">
-                    <option >Cualquier estado</option>
+                    <option value="%">Cualquier estado</option>
                     <option value="E" >Encontrado</option>
                     <option value="P" >Perdido</option>
                 </select>
