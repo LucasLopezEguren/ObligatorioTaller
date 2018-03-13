@@ -10,20 +10,25 @@ require_once("config/configuracion.php");
 $respuesta = array();
 $conn = new ConexionBD(MOTOR, SERVIDOR, BASEDATOS, USUARIOBASE, CLAVEBASE);
 if($conn->conectar()){
-    $sql = "SELECT id,nombre FROM Especies"; 
+    $sql = "SELECT id,nombre FROM Especies";
+    
     $parametros = array();
         
     if($conn->consulta($sql, $parametros)){
         $listadoEspecies = $conn->restantesRegistros();  
+        $sql = "SELECT id,nombre FROM Barrios";
+        if($conn->consulta($sql, $parametros)){
+        $listadoBarrios = $conn->restantesRegistros();  
         $smarty = new Smarty();
 
         $smarty->template_dir = "templates";
         $smarty->compile_dir = "templates_c";
-        $_SESSION['usuario'] = "Desconectado";
         
         $smarty->assign("usuario",$_SESSION['usuario']);
         $smarty->assign("especies",$listadoEspecies);
+        $smarty->assign("barrios",$listadoBarrios);
         $smarty->display("index.tpl"); 
+        }
     }
         else{
             $respuesta['estado'] = "ERROR";

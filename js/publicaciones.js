@@ -92,9 +92,10 @@ function traigoPublicaciones(pagina){
         type: "POST",
         dataType: "json",
         data: "pagina=" + pagina + "&filtro=" + $("#txtFiltro").val() + 
-                "&estado=" + $("#cboxEstado").val() +
+                "&tipo=" + $("#cboxTipo").val() +
                 "&especie=" + $("#cboxEspecie").val() +
-                "&raza=" + $("#cboxRaza").val(),
+                "&raza=" + $("#cboxRaza").val() +
+                "&barrio=" + $("#cboxBarrio").val(),
         success: cargoFilas
     });    
 }

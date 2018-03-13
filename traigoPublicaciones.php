@@ -6,7 +6,8 @@ require_once("includes/class.Conexion.BD.php");
 require_once("config/configuracion.php");
 
 $filtroTxt = $_POST['filtro'];
-$estado = $_POST['estado'];
+$tipo = $_POST['tipo'];
+$barrio = $_POST['barrio'];
 $especie = $_POST['especie'];
 $raza = $_POST['raza'];
 $pagina = (int)$_POST['pagina'];
@@ -20,14 +21,16 @@ $respuesta = array();
     if($conn->conectar()){
         $sql = "SELECT count(titulo) Total, LEFT(descripcion,150) descCorta, descripcion,";
             $sql .= " tipo, Publicaciones.especie_id, raza_id, barrio_id, usuario_id, titulo";
-            $sql .= " FROM Publicaciones, Especies, Razas";
+            $sql .= " FROM Publicaciones, Especies, Razas, Barrios";
             $sql .= " WHERE Especies.id = Publicaciones.especie_id AND ";
             $sql .= " Razas.id = Publicaciones.raza_id AND ";
+            $sql .= " Barrios.id = Publicaciones.barrio_id AND ";
+            $sql .= " Barrios.id LIKE '" . $barrio . "' AND ";
             $sql .= " Razas.id LIKE '%" . $raza . "%' AND ";
             $sql .= " Especies.id LIKE '%" . $especie . "%' AND ";
             $sql .= " (titulo LIKE '%" . $filtroTxt . "%' OR ";
             $sql .= " descripcion LIKE '%" . $filtroTxt . "%') and";
-            $sql .= " tipo LIKE '%" . $estado . "%'";
+            $sql .= " tipo LIKE '%" . $tipo . "%'";
             
         $parametros = array();
 
@@ -40,14 +43,16 @@ $respuesta = array();
             
             $sql = "SELECT titulo, LEFT(descripcion,150) descCorta, descripcion,";
             $sql .= " tipo, Publicaciones.especie_id, raza_id, barrio_id, usuario_id, titulo";
-            $sql .= " FROM Publicaciones, Especies, Razas";
+            $sql .= " FROM Publicaciones, Especies, Razas, Barrios";
             $sql .= " WHERE Especies.id = Publicaciones.especie_id AND ";
             $sql .= " Razas.id = Publicaciones.raza_id AND ";
+            $sql .= " Barrios.id = Publicaciones.barrio_id AND ";
+            $sql .= " Barrios.id LIKE '" . $barrio . "' AND ";
             $sql .= " Razas.id LIKE '%" . $raza . "%' AND ";
             $sql .= " Especies.id LIKE '%" . $especie . "%' AND ";
             $sql .= " (titulo LIKE '%" . $filtroTxt . "%' OR ";
             $sql .= " descripcion LIKE '%" . $filtroTxt . "%') and";
-            $sql .= " tipo LIKE '%" . $estado . "%'";
+            $sql .= " tipo LIKE '%" . $tipo . "%'";
             $sql .= " LIMIT :ini, :cant";
 
             $parametros = array();

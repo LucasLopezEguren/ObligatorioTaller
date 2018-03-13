@@ -18,6 +18,17 @@
                 Buscar: <input type="text" id="txtFiltro"/>                 
                 <input type="button" value="Filtrar" id="btnFiltrar"/>
                 <br>
+                <select id="cboxBarrio" nombre="cboxBarrio">
+                    <option value="%" >Cualquier barrio</option>
+                    {foreach from=$barrios item=barrio}
+                        <option value="{$barrio['id']}" >{$barrio['nombre']}</option>
+                    {/foreach}
+                </select>
+                <select id="cboxTipo">
+                    <option value="%">Cualquier tipo</option>
+                    <option value="E" >Encontrado</option>
+                    <option value="P" >Perdido</option>
+                </select>
                 <select id="cboxEspecie" nombre="cboxEspecie">
                     <option value="%" >Cualquier especie</option>
                     {foreach from=$especies item=especie}
@@ -26,11 +37,6 @@
                 </select>
                 <select id="cboxRaza">
                     <option value="%" >Cualquier raza</option>
-                </select>
-                <select id="cboxEstado">
-                    <option value="%">Cualquier estado</option>
-                    <option value="E" >Encontrado</option>
-                    <option value="P" >Perdido</option>
                 </select>
                 <br>
                 <table>
