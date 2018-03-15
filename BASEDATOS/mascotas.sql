@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.11.1deb2
+-- version 3.4.11.1deb2+deb7u1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 24-02-2018 a las 21:46:52
--- Versión del servidor: 5.5.31
--- Versión de PHP: 5.4.4-14+deb7u5
+-- Host: localhost
+-- Generation Time: Mar 14, 2018 at 12:21 PM
+-- Server version: 5.5.43
+-- PHP Version: 5.4.4-14+deb7u5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `mascotas`
+-- Database: `mascotas`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Barrios`
+-- Table structure for table `Barrios`
 --
 
 CREATE TABLE IF NOT EXISTS `Barrios` (
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `Barrios` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
--- Volcado de datos para la tabla `Barrios`
+-- Dumping data for table `Barrios`
 --
 
 INSERT INTO `Barrios` (`id`, `nombre`) VALUES
@@ -54,7 +54,7 @@ INSERT INTO `Barrios` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Especies`
+-- Table structure for table `Especies`
 --
 
 CREATE TABLE IF NOT EXISTS `Especies` (
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `Especies` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Volcado de datos para la tabla `Especies`
+-- Dumping data for table `Especies`
 --
 
 INSERT INTO `Especies` (`id`, `nombre`) VALUES
@@ -77,7 +77,7 @@ INSERT INTO `Especies` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Preguntas`
+-- Table structure for table `Preguntas`
 --
 
 CREATE TABLE IF NOT EXISTS `Preguntas` (
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `Preguntas` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Volcado de datos para la tabla `Preguntas`
+-- Dumping data for table `Preguntas`
 --
 
 INSERT INTO `Preguntas` (`id`, `id_publicacion`, `texto`, `respuesta`, `usuario_id`) VALUES
@@ -102,7 +102,7 @@ INSERT INTO `Preguntas` (`id`, `id_publicacion`, `texto`, `respuesta`, `usuario_
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Publicaciones`
+-- Table structure for table `Publicaciones`
 --
 
 CREATE TABLE IF NOT EXISTS `Publicaciones` (
@@ -116,6 +116,7 @@ CREATE TABLE IF NOT EXISTS `Publicaciones` (
   `abierto` bit(1) NOT NULL,
   `usuario_id` int(11) NOT NULL,
   `exitoso` bit(1) DEFAULT NULL,
+  `pubFoto` varchar(100) NOT NULL,
   `latitud` decimal(10,8) DEFAULT NULL,
   `longitud` decimal(11,8) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -123,21 +124,34 @@ CREATE TABLE IF NOT EXISTS `Publicaciones` (
   KEY `fk_publicacion_especie_idx` (`especie_id`),
   KEY `fk_publicacion_raza_idx` (`raza_id`),
   KEY `fk_publicacion_barrio_idx` (`barrio_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
--- Volcado de datos para la tabla `Publicaciones`
+-- Dumping data for table `Publicaciones`
 --
 
-INSERT INTO `Publicaciones` (`id`, `titulo`, `descripcion`, `tipo`, `especie_id`, `raza_id`, `barrio_id`, `abierto`, `usuario_id`, `exitoso`, `latitud`, `longitud`) VALUES
-(1, 'Encontrado en Peñarol', 'Fue encontrado este perrito en el barrio Peñarol en las inmediaciones de la cooperativa Mesa 2, está asustado y aulla. Se agradese información para devolverlo a sus dueños. Muchas gracias.', 'E', 1, 7, 13, b'1', 1, NULL, -34.82296900, -56.20121800),
-(2, 'Ovejero en la Playa', 'Perro Ovejero aleman joven grande, se encuentra caminando sin rumbo en playa de El Buceo, esta muy muy lastimada su boca, con mucha tristeza y mucho dolor, esta precisando realmente ayuda urgente, segun un vecino dice que hace unos dias esta caminando, se agradece a alguien que lo pueda ayudar ya que se encuentra bien.', 'E', 1, 5, 2, b'0', 1, b'1', -34.90103100, -56.12275500),
-(3, 'Thor', 'se perdio en 8 de octubre y garibaldi, color negro tamaño grande es manso se llama thor, se recompensarà, tel 094 XXX XXX', 'P', 1, 6, 4, b'1', 2, NULL, -34.88916200, -56.16065800);
+INSERT INTO `Publicaciones` (`id`, `titulo`, `descripcion`, `tipo`, `especie_id`, `raza_id`, `barrio_id`, `abierto`, `usuario_id`, `exitoso`, `pubFoto`, `latitud`, `longitud`) VALUES
+(1, 'Encontrado en Peñarol', 'Fue encontrado este perrito en el barrio Peñarol en las inmediaciones de la cooperativa Mesa 2, está asustado y aulla. Se agradese información para devolverlo a sus dueños. Muchas gracias.', 'E', 1, 7, 13, b'1', 1, NULL, '', -34.82296900, -56.20121800),
+(2, 'Ovejero en la Playa', 'Perro Ovejero aleman joven grande, se encuentra caminando sin rumbo en playa de El Buceo, esta muy muy lastimada su boca, con mucha tristeza y mucho dolor, esta precisando realmente ayuda urgente, segun un vecino dice que hace unos dias esta caminando, se agradece a alguien que lo pueda ayudar ya que se encuentra bien.', 'E', 1, 5, 2, b'0', 1, b'1', '', -34.90103100, -56.12275500),
+(3, 'Thor', 'se perdio en 8 de octubre y garibaldi, color negro tamaño grande es manso se llama thor, se recompensarà, tel 094 XXX XXX', 'P', 1, 6, 4, b'1', 2, NULL, '', -34.88916200, -56.16065800),
+(7, 'Hola', 'Hola', 'E', 2, 12, 4, b'0', 1, NULL, 'fotos/20180314114814_C&A.png', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Razas`
+-- Table structure for table `Publicaciones_fotos`
+--
+
+CREATE TABLE IF NOT EXISTS `Publicaciones_fotos` (
+  `id_publicacion` int(11) NOT NULL,
+  `pubFoto` varchar(100) NOT NULL,
+  PRIMARY KEY (`pubFoto`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Razas`
 --
 
 CREATE TABLE IF NOT EXISTS `Razas` (
@@ -149,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `Razas` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
 
 --
--- Volcado de datos para la tabla `Razas`
+-- Dumping data for table `Razas`
 --
 
 INSERT INTO `Razas` (`id`, `especie_id`, `nombre`) VALUES
@@ -175,7 +189,7 @@ INSERT INTO `Razas` (`id`, `especie_id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Usuarios`
+-- Table structure for table `Usuarios`
 --
 
 CREATE TABLE IF NOT EXISTS `Usuarios` (
@@ -185,30 +199,32 @@ CREATE TABLE IF NOT EXISTS `Usuarios` (
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Volcado de datos para la tabla `Usuarios`
+-- Dumping data for table `Usuarios`
 --
 
 INSERT INTO `Usuarios` (`id`, `email`, `nombre`, `password`) VALUES
 (1, 'juan.perez@test.com', 'Juan Perez', '098f6bcd4621d373cade4e832627b4f6'),
 (2, 'agonzalez@otro.com', 'Ana Gonzalez', '098f6bcd4621d373cade4e832627b4f6'),
-(3, 'admin', 'admin', '81dc9bdb52d04dc20036dbd8313ed055');
+(3, 'admin', 'admin', '81dc9bdb52d04dc20036dbd8313ed055'),
+(4, 'ffff', 'ffff', 'ece926d8c0356205276a45266d361161'),
+(5, 'hhh', 'hhh', 'a3aca2964e72000eea4c56cb341002a4');
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `Preguntas`
+-- Constraints for table `Preguntas`
 --
 ALTER TABLE `Preguntas`
   ADD CONSTRAINT `fk_pregunta_publicacion` FOREIGN KEY (`id_publicacion`) REFERENCES `Publicaciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_pregunta_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `Usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `Publicaciones`
+-- Constraints for table `Publicaciones`
 --
 ALTER TABLE `Publicaciones`
   ADD CONSTRAINT `fk_publicacion_barrio` FOREIGN KEY (`barrio_id`) REFERENCES `Barrios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -217,7 +233,7 @@ ALTER TABLE `Publicaciones`
   ADD CONSTRAINT `fk_publicacion_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `Usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `Razas`
+-- Constraints for table `Razas`
 --
 ALTER TABLE `Razas`
   ADD CONSTRAINT `fk_raza_especie` FOREIGN KEY (`especie_id`) REFERENCES `Especies` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
