@@ -35,6 +35,17 @@
                         <tr>
                             <td colspan='4' class='celdaPublicacionDesc'>{$publi['descripcion']}</td>
                         </tr>
+                        <tr>
+                            <td colspan='4'><h3>Preguntas</h3></td>
+                        </tr>
+                        {foreach from=$preguntas item=pregunta}
+                        <tr>
+                            <td colspan='4' class='celdaPublicacionDesc'>{$pregunta['texto']}</td>
+                        </tr>
+                        <tr>
+                            <td colspan='4' class='celdaPublicacionDesc'>{$pregunta['respuesta']}</td>
+                        </tr>
+                        {/foreach}
                     {/foreach}
                 </table>
                 {if $usuario eq $publi['email']}
