@@ -18,7 +18,7 @@
         <div style="float: left">
             {include file="menu.tpl"}
         </div>
-        <div style="align-content: center" class="registros" class="izq">
+        <div style="float: right; align-content: center" class="registros" class="izq">
             <p class="izq">Ingrese datos para todos los campos a continuacion: </p>
             <form method="POST" enctype="multipart/form-data" action="graboPublicacion.php">
                 <table>

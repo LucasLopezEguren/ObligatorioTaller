@@ -21,6 +21,8 @@ if (is_uploaded_file($_FILES['foto']['tmp_name'])) {
 //creo una instancia de conexion
 $conn = new ConexionBD(MOTOR, SERVIDOR, BASEDATOS, USUARIOBASE, CLAVEBASE);
 
+$usuNom = $_SESSION['usuario'];
+
 $pubNombre = $_POST['pubNombre'];
 $estado = $_POST['Estado'];
 $pubDesc = $_POST['pubDesc'];
