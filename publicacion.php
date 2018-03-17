@@ -27,15 +27,18 @@ if($conn->conectar()){
         $publicacion = $conn->restantesRegistros();  
         $smarty = new Smarty();
         
-        $sql = "SELECT texto, id_publicacion, respuesta";
-            $sql .= " FROM Preguntas";
-            $sql .= " id_publicacion =" . $id;
+        $sql = "SELECT texto, respuesta";
+            $sql .= " FROM Preguntas, Publicaciones";
+            $sql .= " WHERE Publicaciones.id = id_publicacion AND ";
+            $sql .= " Publicaciones.id =" . $id;
+    
 
         $parametros = array();
 
         if($conn->consulta($sql, $parametros)){
         $preguntas = $conn->restantesRegistros();  
 
+        $smarty->assign("preguntas",$preguntas);
         }
         else{
             $respuesta['estado'] = "ERROR";
@@ -46,7 +49,6 @@ if($conn->conectar()){
         $smarty->compile_dir = "templates_c";
         
         $smarty->assign("usuario",$_SESSION['usuario']);
-        $smarty->assign("preguntas",$preguntas);
         $smarty->assign("publicacion",$publicacion);
         $smarty->display("publicacion.tpl"); 
     }
