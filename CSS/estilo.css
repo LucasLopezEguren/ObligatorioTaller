@@ -1,4 +1,3 @@
-
 .barraNav {
     display: block;
     color: #000;
@@ -20,6 +19,10 @@
     height: 70px;
     border: black 5px solid;
 }
+.celdaPublicacionDesc{
+    width: 400px;
+    border: black 5px solid;
+}
 .celdaPublicacionesDesc{
     width: 400px;
     height: 70px;    
@@ -36,8 +39,10 @@
 	height: 1000px;
 }
 #menuBarra{
+        margin-right: 30px;
 	width: 200px;
 	height: 50px;
+        min-height: calc(100vh - 50px);
 	background-color: #228822;
 }
 #home{	

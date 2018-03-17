@@ -19,7 +19,7 @@ $respuesta = array();
    
     $conn = new ConexionBD(MOTOR, SERVIDOR, BASEDATOS, USUARIOBASE, CLAVEBASE);
     if($conn->conectar()){
-        $sql = "SELECT count(titulo) Total, LEFT(descripcion,150) descCorta, descripcion,";
+        $sql = "SELECT count(titulo) Total, LEFT(descripcion,150) descCorta, descripcion, pubFoto,";
             $sql .= " tipo, Publicaciones.especie_id, raza_id, barrio_id, usuario_id, titulo";
             $sql .= " FROM Publicaciones, Especies, Razas, Barrios";
             $sql .= " WHERE Especies.id = Publicaciones.especie_id AND ";
@@ -41,7 +41,7 @@ $respuesta = array();
                     
             $inicio = ($pagina -1) * CANTXPAG;
             
-            $sql = "SELECT titulo, LEFT(descripcion,150) descCorta, descripcion,";
+            $sql = "SELECT titulo, Publicaciones.id, LEFT(descripcion,150) descCorta, descripcion, pubFoto,";
             $sql .= " tipo, Publicaciones.especie_id, raza_id, barrio_id, usuario_id, titulo";
             $sql .= " FROM Publicaciones, Especies, Razas, Barrios";
             $sql .= " WHERE Especies.id = Publicaciones.especie_id AND ";

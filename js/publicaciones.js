@@ -109,11 +109,13 @@ function cargoFilas(datos){
         largo = publicaciones.length-1;
         for(pos = 0; pos <= largo; pos=pos+1){
             publicacion = publicaciones[pos];
-            fila = "<tr>";
-            fila += "<td class='celdaPublicacionesTitulo'>" + publicacion['titulo'] + "</td>";
+            fila = "";
+            fila += "<tr>";
+            fila += "<td class='celdaPublicacionesTitulo'><a href='publicacion.php?item=" + publicacion['id'] +"'>" + publicacion['titulo'] + "</a></td>";
             fila += "<td class='celdaPublicacionesDesc'>" + publicacion['descCorta'] + "</td>";
+            foto = publicacion['pubFoto'];
+            fila += "<td class='celdaPublicacionesTitulo'><img src='" + foto + "'></td>";
             fila += "</tr>";
-            
             $("#publicaciones").append(fila);
          lineas++;
         }
