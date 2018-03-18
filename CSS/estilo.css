@@ -15,9 +15,15 @@
 	font-size: 12px;
 }
 .celdaPublicacionesTitulo{
+    align: "center";
     width: 100px;
     height: 70px;
     border: black 5px solid;
+}
+.celdaPYR{
+    width: 133px;
+    border: black 5px solid;
+    align: "center";
 }
 .celdaPublicacionDesc{
     width: 400px;

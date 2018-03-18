@@ -27,7 +27,7 @@ if($conn->conectar()){
         $publicacion = $conn->restantesRegistros();  
         $smarty = new Smarty();
         
-        $sql = "SELECT texto, respuesta";
+        $sql = "SELECT texto, respuesta, Preguntas.id pregId";
             $sql .= " FROM Preguntas, Publicaciones";
             $sql .= " WHERE Publicaciones.id = id_publicacion AND ";
             $sql .= " Publicaciones.id =" . $id;

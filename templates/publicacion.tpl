@@ -39,11 +39,30 @@
                             <td colspan='4'><h3>Preguntas y respuestas</h3></td>
                         </tr>
                         {foreach from=$preguntas item=pregunta}
-                        <tr>
-                            <td colspan='2' class='celdaPublicacionDesc'>{$pregunta['texto']}</td>
-                            <td colspan='2' class='celdaPublicacionDesc'>{$pregunta['respuesta']}</td>
-                        </tr>
+                            <tr>
+                                <td colspan='2' widht ='80px' class='celdaPYR'>{$pregunta['texto']}</td>
+                                {if $usuario eq $publi['email'] and $pregunta['respuesta'] eq ""}
+                                 <form method="POST" action="respuesta.php">
+                                    <input type="hidden" name="pregId" id="pregId" value="{$pregunta['pregId']}">
+                                    <input type="hidden" name="pubId" id="pubId" value="{$publi['id']}">
+                                    <td class='celdaPYR'><input type="textbox" id='txtRespuesta' name='txtRespuesta'></td>    
+                                    <td class='celdaPYR'><input type ='submit' value='Responder'></td>
+                                </form>
+                                {else}
+                                <td class='celdaPYR'>{$pregunta['respuesta']}</td>
+                                {/if}
+                            </tr>
                         {/foreach}
+                        {if $usuario neq $publi['email'] and $usuario neq "Desconectado"}
+                            <tr>
+                                <form method="POST" action="pregunta.php">
+                                    <input type="hidden" name="pubId" id="pubId" value="{$publi['id']}">
+                                    <input type="hidden" name="usuCorreo" id="usuCorreo" value="{$usuario}">
+                                    <td class='celdaPYR'><input type="textbox" id='txtPregunta' name='txtPregunta'></td>    
+                                    <td class='celdaPYR'><input type ='submit' value='Preguntar'></td>
+                                </form>
+                            </tr>
+                        {/if}
                     {/foreach}
                 </table>
                 {if $usuario eq $publi['email']}

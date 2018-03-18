@@ -23,7 +23,9 @@ if($conn->conectar()){
 
         $smarty->template_dir = "templates";
         $smarty->compile_dir = "templates_c";
-        
+        if(is_null($_SESSION['usuario'])){
+        $_SESSION['usuario'] = "Desconectado";
+        }
         $smarty->assign("usuario",$_SESSION['usuario']);
         $smarty->assign("especies",$listadoEspecies);
         $smarty->assign("barrios",$listadoBarrios);
