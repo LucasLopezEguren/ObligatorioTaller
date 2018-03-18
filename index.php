@@ -28,6 +28,7 @@ if($conn->conectar()){
         }
         $smarty->assign("usuario",$_SESSION['usuario']);
         $smarty->assign("especies",$listadoEspecies);
+        $smarty->assign("usuId",$usuId);
         $smarty->assign("barrios",$listadoBarrios);
         $smarty->display("index.tpl"); 
         }
