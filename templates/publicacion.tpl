@@ -66,7 +66,10 @@
                     {/foreach}
                 </table>
                 {if $usuario eq $publi['email']}
-                    <input type="button" value="editar">
+                    <form action="editarPublicacion.php">
+                        <input type="Submit" value="Editar" />
+                        <input type="hidden" name="pubId" id="pubId" value="{$publi['id']}">
+                    </form>
                 {/if}
             </div>
         </div>
