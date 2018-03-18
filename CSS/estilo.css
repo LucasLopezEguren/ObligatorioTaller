@@ -18,11 +18,9 @@
     align: "center";
     width: 100px;
     height: 70px;
-    border: black 5px solid;
 }
 .celdaPYR{
     width: 133px;
-    border: black 5px solid;
     align: "center";
 }
 .celdaPublicacionDesc{
@@ -32,7 +30,6 @@
 .celdaPublicacionesDesc{
     width: 400px;
     height: 70px;    
-    border: black 5px solid;
 }
 .mensaje{
     width: 200px;

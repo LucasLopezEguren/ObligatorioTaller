@@ -39,21 +39,27 @@
                     <option value="%" >Cualquier raza</option>
                 </select>
                 <br>
-                <table>
+                <input type="button" value="PRIMERO" class="btnINI">
+                <input type="button" value="ANTERIOR" class="btnANT">
+                <span id="pagActualTop"></span>
+                <input type="button" value="SIGUIENTE" class="btnSIG">
+                <input type="button" value="ÚLTIMO" class="btnFIN">
+                <br>
+                <table>                    
                     <thead>
                         <tr>
                             <td>Titulo</td>
                             <td>Descripcion</td>
                         </tr>
-                    </thead>
+                    </thead>                    
                     <tbody id="publicaciones">                      
                     </tbody>
                 </table>
-                <input type="button" value="PRIMERO" id="btnINI">
-                <input type="button" value="ANTERIOR" id="btnANT">
-                <span id="pagActual"></span>
-                <input type="button" value="SIGUIENTE" id="btnSIG">
-                <input type="button" value="ÚLTIMO" id="btnFIN">
+                <input type="button" value="PRIMERO" class="btnINI">
+                <input type="button" value="ANTERIOR" class="btnANT">
+                <span id="pagActualBot"></span>
+                <input type="button" value="SIGUIENTE" class="btnSIG">
+                <input type="button" value="ÚLTIMO" class="btnFIN">
             <script type="text/javascript">
                 var cantidadXpagina = {$smarty.const.CANTXPAG};
             </script>

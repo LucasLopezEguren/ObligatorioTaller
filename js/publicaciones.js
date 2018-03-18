@@ -4,11 +4,10 @@ var pagina = 1;
 var ultPag = 0;
 
 function inicializo(){
-    $("#btnANT").click(anteriorPagina);
-    $("#btnSIG").click(siguientePagina);
-    $("#btnINI").click(primeraPagina);
-    $("#btnFIN").click(ultimaPagina);
-    $(".irPagina").click(irPaginaNro);
+    $(".btnANT").click(anteriorPagina);
+    $(".btnSIG").click(siguientePagina);
+    $(".btnINI").click(primeraPagina);
+    $(".btnFIN").click(ultimaPagina);
     $("#btnFiltrar").click(aplicarFiltro);
     $("#cboxEspecie").change(cargarRazas);
     cargoPublicaciones();
@@ -116,13 +115,17 @@ function cargoFilas(datos){
             foto = publicacion['pubFoto'];
             fila += "<td class='celdaPublicacionesTitulo'><img src='" + foto + "' height='100'></td>";
             fila += "</tr>";
+            fila += "<tr><td colspan='3' align='center'>-------------------------";
+            fila +="------------------------</td></tr>";
             $("#publicaciones").append(fila);
          lineas++;
         }
-        for(pos=lineas; pos<=2; pos++){
-            $("#publicaciones").append("<td class='celdaPublicacionesTitulo'></td>");
+        for(pos=lineas; pos<=10; pos++){
+            $("#publicaciones").append("<tr><td class='celdaPublicacionesTitulo'></td>");
+            $("#publicaciones").append("<td class='celdaPublicacionesTitulo'></td></tr>");
         }
-        $("#pagActual").html("<b>" + pagina + "/" + ultPag + "</b>")
+        $("#pagActualTop").html("<b>" + pagina + "/" + ultPag + "</b>")
+        $("#pagActualBot").html("<b>" + pagina + "/" + ultPag + "</b>")
     }
     else{
         alert(datos['mensaje']);
