@@ -53,6 +53,7 @@ $respuesta = array();
             $sql .= " (titulo LIKE '%" . $filtroTxt . "%' OR ";
             $sql .= " descripcion LIKE '%" . $filtroTxt . "%') and";
             $sql .= " tipo LIKE '%" . $tipo . "%'";
+            $sql .= " ORDER BY id DESC";
             $sql .= " LIMIT :ini, :cant";
 
             $parametros = array();
