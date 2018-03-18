@@ -6,11 +6,11 @@
         <script type="text/javascript" src="js/publicaciones.js"></script>     
     </head>
     <body>
-        {include file="cabezal.tpl"}
+        {include file="cabezal.tpl"} 
         <div style="float: left">
             {include file="menu.tpl"}
         </div>
-        <div style="float: left;" align-content: center>
+        <div style="float: left;" align-content: center class="contenedor">
             <h1>Bienvenido</h1>
             <div style="float: left;" align-content: center>
                 <h3>Publicaciones</h3>

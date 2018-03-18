@@ -6,6 +6,14 @@
 }
 
 /* Change the link color on hover */
+.contenedor{
+    color: #333;
+    border: 1px solid #f00;
+    width:  800px;
+    height:  calc(100vh - 50px);
+    min-height: calc(100vh - 50px);
+    overflow: auto;
+}
 .barraNav:hover {
     background-color: #555;
     color: white;
