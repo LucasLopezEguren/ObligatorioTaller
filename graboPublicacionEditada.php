@@ -49,6 +49,7 @@ if ($estado == "Reunido") {
 if ($conn->conectar()) {
     $sql1 = "SELECT id FROM Usuarios WHERE email = '" . $usuNom ."'";
     $parametros = array();
+    $parametros2 = array();
         
     if($conn->consulta($sql1, $parametros)){
         $usuDatos= $conn->siguienteRegistro();
@@ -59,6 +60,9 @@ if ($conn->conectar()) {
                 . "raza_id=:razaId, barrio_id=:barId, abierto=:abierto, usuario_id=:usuId, exitoso=:exitoso, pubFoto=:rutFoto WHERE id=$pubId";
         
 
+        $sql2 = "INSERT INTO Publicaciones_Fotos (id_publicacion, pubFoto) VALUES ($id, $foto)"
+                    . "ON DUPLICATE KEY UPDATE pubFoto = pubFoto";
+        
         //cargo los parametros para la sql
         $parametros = array();
         $parametros[0] = array("nom", $pubNombre, "string");
@@ -75,7 +79,12 @@ if ($conn->conectar()) {
 //        echo "<pre>";
 //        print_r($parametros);
 //        echo "<pre>";
-
+        if($nuevaFoto==TRUE){
+            $parametros2[0] = array("id", $id, "int");
+            $parametros2[1] = array("rutaFoto", $foto, "string");
+            $conn->consulta($sql2, $parametros2);
+            
+        }
 
         if ($conn->consulta($sql, $parametros)) {
             header("Location: admUsuarios.php");
