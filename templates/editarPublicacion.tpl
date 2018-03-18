@@ -13,7 +13,8 @@
         </div>
         <div style="float: left; align-content: center" class="registros" class="izq">
             <p class="izq">Ingrese datos para todos los campos a continuacion: </p>
-            <form method="POST" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data" action="graboPublicacionEditada.php">
+                <input type="hidden" name="pubId" id="pubId" value="{$publicacion[0]['id']}">
                 <table>
                     <tr>
                         <td>Título: </td>
@@ -25,8 +26,7 @@
                     </tr>
                     <tr>
                         <td>Estado:</td>
-                        <td><input type="radio" id="Encontrado" name="Estado" value="Encontrado" required/>Encontrado</td>
-                        <td><input type="radio" id="Perdido" name="Estado" value="Perdido"/>Perdido</td>
+                        <td><input type="radio" id="Reunido" name="Estado" value="Reunido"/>Reunido con dueño</td>
                     </tr>
                     <tr>
                         <td><div id="errEstado" class="mensaje"></br></div></td>
