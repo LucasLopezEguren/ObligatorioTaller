@@ -7,15 +7,19 @@ require_once("config/configuracion.php");
 require_once("includes/libs/Smarty.class.php");
 
 $pubId = (int) $_REQUEST['pubId'];
+$fotoOriginal = $_REQUEST['fotoOriginal'];
+$nuevaFoto= FALSE;
 
 if (is_uploaded_file($_FILES['foto']['tmp_name'])) {
     $nuevoNombre = "fotos/" . date("YmdHis") . "_" . ($_FILES['foto']['name']);
     if (move_uploaded_file($_FILES['foto']['tmp_name'], $nuevoNombre)) {
         $foto = $nuevoNombre;
+        $nuevaFoto=TRUE;
     } else {
         die("Error al procesar archivo");
     }
 } else {
+    $foto=$fotoOriginal;
     print_r($_FILES['foto']['tmp_name']);
     #die("Error al subir archivo");
 }
@@ -31,7 +35,7 @@ $pubDesc = $_POST['pubDesc'];
 $espId = (int) $_POST['especies'];
 $razaId = (int) $_POST['razas'];
 $barrio = $_POST['barrio'];
-$exitoso = (int) 1;
+$exitoso = NULL;
 $abierto = 1;
 
 if ($estado == "Reunido") {
@@ -51,11 +55,9 @@ if ($conn->conectar()) {
         $usuId= (int)$usuDatos['id'];
     
         //armo la SQL
-//        $sql = "UDPATE Publicaciones";
-//        $sql .= " SET (titulo=:nom, descripcion=:desc, tipo=:est, especie_id=:espId, raza_id=:razaId, barrio_id=:barId, abierto=:abierto, usuario_id=:usuId, exitoso=:exitoso, pubFoto=:rutFoto)";
-        $sql = "UPDATE Publicaciones (titulo, descripcion, tipo, especie_id, raza_id, barrio_id, abierto, usuario_id, exitoso, pubFoto)";
-        $sql .= " SET (:nom, :desc, :est, :espId, :razaId, :barId, :abierto, :usuId, :exitoso, :rutFoto)";
-        $sql .= " WHERE id=$pubId";
+        $sql = "UPDATE Publicaciones SET titulo=:nom, descripcion=:desc, tipo=:est, especie_id=:espId,"
+                . "raza_id=:razaId, barrio_id=:barId, abierto=:abierto, usuario_id=:usuId, exitoso=:exitoso, pubFoto=:rutFoto WHERE id=$pubId";
+        
 
         //cargo los parametros para la sql
         $parametros = array();
@@ -70,11 +72,11 @@ if ($conn->conectar()) {
         $parametros[8] = array("exitoso", $exitoso, "int");
         $parametros[9] = array("rutFoto", $foto, "string");
 
-        echo "<pre>";
-        print_r($usuId);
-        echo "<pre>";
+//        echo "<pre>";
+//        print_r($parametros);
+//        echo "<pre>";
 
-        //    ejecuto la consulta
+
         if ($conn->consulta($sql, $parametros)) {
             header("Location: admUsuarios.php");
         } else {

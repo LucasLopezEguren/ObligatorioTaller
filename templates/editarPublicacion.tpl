@@ -15,6 +15,7 @@
             <p class="izq">Ingrese datos para todos los campos a continuacion: </p>
             <form method="POST" enctype="multipart/form-data" action="graboPublicacionEditada.php">
                 <input type="hidden" name="pubId" id="pubId" value="{$publicacion[0]['id']}">
+                <input type="hidden" name="fotoOriginal" id="fotoOriginal" value="{$publicacion[0]['pubFoto']}">
                 <table>
                     <tr>
                         <td>Título: </td>
