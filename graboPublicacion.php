@@ -63,18 +63,14 @@ if ($conn->conectar()) {
         $parametros[8] = array("exitoso", NULL, "int");
         $parametros[9] = array("rutFoto", $foto, "string");
 
-        echo "<pre>";
-        print_r($usuId);
-        echo "<pre>";
-
         //    ejecuto la consulta
         if ($conn->consulta($sql, $parametros)) {
             header("Location: admUsuarios.php");
         } else {
-            echo "Error de Consulta de insersion" . $conn->ultimoError();
+            echo "Error de Consulta de insersion: " . $conn->ultimoError();
         }
     } else {
-        echo "Error de Consulta 1 " . $conn->ultimoError();
+        echo "Error de Consulta de seleccion de id: " . $conn->ultimoError();
     }
 } else {
     echo "Error de Conexión " . $conn->ultimoError();
