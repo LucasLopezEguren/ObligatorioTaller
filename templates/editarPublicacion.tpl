@@ -3,15 +3,8 @@
         <meta charset="UTF-8">
         <title>Mascotas APP</title>
         <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>            
-        <script type="text/javascript" src="js/admUsuarios.js"></script> 
-        <script type="text/javascript" src="js/nuevaPublicacion.js"></script>   
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script type="text/javascript" src="js/jquery-2.0.3.js"></script>
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <meta name="Keywords" content="palabras claves">
-        <meta name="Description" content="este sitio esta creado para las mascotas perdidas">
-        <meta name="Author" content="Lucas Lopez - Luca Miraglia">
-        <link rel="stylesheet" type="text/css" href="CSS/estilo.css">
+        <script type="text/javascript" src="js/publicaciones.js"></script>
+        <script type="text/javascript" src="js/nuevaPublicacion.js"></script>
     </head>
     <body>
         {include file="cabezal.tpl"}
@@ -20,11 +13,11 @@
         </div>
         <div style="float: left; align-content: center" class="registros" class="izq">
             <p class="izq">Ingrese datos para todos los campos a continuacion: </p>
-            <form method="POST" enctype="multipart/form-data" action="graboPublicacion.php">
+            <form method="POST" enctype="multipart/form-data">
                 <table>
                     <tr>
                         <td>Título: </td>
-                        <td><input type="text" id="pubNombre" class="noVoid" name="pubNombre"/></td> 							
+                        <td><input type="text" id="pubNombre" class="noVoid" name="pubNombre" value="{$publicacion[0]['titulo']}"/></td> 							
                     </tr>
                     <tr>
                         <td><div id="errusuNombre" class="error"></br></div></td>
@@ -40,7 +33,7 @@
                     </tr>
                     <tr>
                         <td>Descripción:</td>
-                        <td><input type="text" id="pubDesc" class="noVoid" name="pubDesc"/></td> 
+                        <td><input type="text" id="pubDesc" class="noVoid" name="pubDesc" value="{$publicacion[0]['descripcion']}" /></td> 
                     </tr>
                     <tr>
                         <td><div id="errusuCorreo" class="mensaje"></br></div></td>
@@ -56,18 +49,23 @@
                             </select>   
                     </tr>
                     <tr>
-                        <td>Barrio: <select id="barrio" name="barrio">
+                        <td>Barrio: <select id="barrio" name="barrio" value="{$publicacion[0]['barrio']}">
                                 {foreach from=$barrios item=barrio}
                                     <option value="{$barrio['id']}" {if $barrio['id'] eq 0}selected="selected"{/if}>{$barrio['nombre']}</option>
                             {/foreach}</td> 							
                     </tr>
                     <tr>
-                        <td>Foto: </td>
-                        <td><input type="file" id="foto" name="foto"/></td> 							
+                        <td>Fotos: </td>
+                        <td><img src='{$publicacion[0]['pubFoto']}'></td>							
+                    </tr>
+                    <tr>
+                        <td>Agregar foto: </td>
+                        <td><input type="file" id="foto" name="foto" value="Agregar Foto"/></td> 							
                     </tr>
                 </table>
-                <input type="submit" value="Publicar">
+                <input type="submit" value="Guardar">
             </form>
         </div>
     </body>
+    
 </html>
