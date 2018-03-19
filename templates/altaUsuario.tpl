@@ -47,7 +47,7 @@
                     </table>
                     <input type="submit" value="Agregar Usuario">
                 </form>
-                <div>{$mensaje}</div>
+                <div class="error">{$mensaje}</div>
             </div>
         </div>
     </body>

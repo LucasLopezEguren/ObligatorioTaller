@@ -24,7 +24,7 @@ if ($conn->conectar()) {
     $sql .= " FROM Publicaciones, Especies, Razas, Barrios";
     $sql .= " WHERE Especies.id = Publicaciones.especie_id AND ";
     $sql .= " Razas.id = Publicaciones.raza_id AND ";
-    $sql .= " exitoso IS NULL AND";
+    $sql .= " abierto = 1 AND";
     $sql .= " Barrios.id = Publicaciones.barrio_id AND ";
     $sql .= " Barrios.id LIKE '" . $barrio . "' AND ";
     $sql .= " Razas.id LIKE '%" . $raza . "%' AND ";
@@ -48,7 +48,7 @@ if ($conn->conectar()) {
         $sql .= " FROM Publicaciones, Especies, Razas, Barrios";
         $sql .= " WHERE Especies.id = Publicaciones.especie_id AND ";
         $sql .= " Razas.id = Publicaciones.raza_id AND ";
-        $sql .= " exitoso IS NULL AND";
+        $sql .= " abierto = 1 AND";
         $sql .= " Barrios.id = Publicaciones.barrio_id AND ";
         $sql .= " Barrios.id LIKE '" . $barrio . "' AND ";
         $sql .= " Razas.id LIKE '%" . $raza . "%' AND ";

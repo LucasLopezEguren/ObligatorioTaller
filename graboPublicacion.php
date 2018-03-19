@@ -58,7 +58,7 @@ if ($conn->conectar()) {
         $parametros[3] = array("espId", $espId, "int");
         $parametros[4] = array("razaId", $razaId, "int");
         $parametros[5] = array("barId", $barrio, "int");
-        $parametros[6] = array("abierto", 0, "int");
+        $parametros[6] = array("abierto", 1, "int");
         $parametros[7] = array("usuId", $usuId, "int");
         $parametros[8] = array("exitoso", NULL, "int");
         $parametros[9] = array("rutFoto", $foto, "string");

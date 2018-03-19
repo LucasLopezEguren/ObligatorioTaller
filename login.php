@@ -11,7 +11,7 @@ $smarty->template_dir = "templates";
 $smarty->compile_dir = "templates_c";
 
 //TODO
-$smarty->assign("usuario",$_COOKIE['txtUsu']);
+$smarty->assign("usuario","Desconectado");
 $smarty->assign("mensaje",$mensaje);
 
 $smarty->display("login.tpl");

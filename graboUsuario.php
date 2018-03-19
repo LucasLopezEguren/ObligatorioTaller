@@ -24,29 +24,44 @@ if ($conn->conectar()) {
     if ($conn->consulta($sql, $parametros)) {
 
         $usuario = $conn->siguienteRegistro();
-        if (empty($usuario)) {
-            //armo la SQL
-            $sql = "INSERT INTO Usuarios (nombre, email, password)";
-            $sql .= " VALUES (:nom, :email, :pass)";
+        $claveCorrecta = strlen($usuClave) > 7;
+        $valCorreo = strpos($usuCorreo, '@');
+        $claveTieneNum = preg_match('/\d/', $usuClave);
+        if ($valCorreo) {
+            if ($claveCorrecta && $claveTieneNum) {
+                if (empty($usuario)) {
+                    //armo la SQL
+                    $sql = "INSERT INTO Usuarios (nombre, email, password)";
+                    $sql .= " VALUES (:nom, :email, :pass)";
 
-            //cargo los parametros para la sql
-            $parametros = array();
-            $parametros[0] = array("nom", $usuUsuario, "string");
-            $parametros[1] = array("email", $usuCorreo, "string");
-            $parametros[2] = array("pass", md5($usuClave), "string");
-            //ejecuto la consulta
-            if ($conn->consulta($sql, $parametros)) {
-                $_SESSION['ingreso'] = true;
-                $_SESSION['usuario'] = $usuCorreo;
-                setcookie("txtUsu", $usuCorreo, time() + (60 * 60 * 24));
-                header("Location: index.php");
+                    //cargo los parametros para la sql
+                    $parametros = array();
+                    $parametros[0] = array("nom", $usuUsuario, "string");
+                    $parametros[1] = array("email", $usuCorreo, "string");
+                    $parametros[2] = array("pass", md5($usuClave), "string");
+                    //ejecuto la consulta
+                    if ($conn->consulta($sql, $parametros)) {
+                        $_SESSION['ingreso'] = true;
+                        $_SESSION['usuario'] = $usuCorreo;
+                        setcookie("txtUsu", $usuCorreo, time() + (60 * 60 * 24));
+                        header("Location: index.php");
+                    } else {
+                        echo "Error de Consulta " . $conn->ultimoError();
+                    }
+                } else {
+                    $smarty = new Smarty();
+                    $_SESSION['mensaje'] = "Ya hay un usuario con ese correo.";
+                    header("Location: altaUsuario.php");
+                }
             } else {
-                echo "Error de Consulta " . $conn->ultimoError();
+                $smarty = new Smarty();
+                $_SESSION['mensaje'] = "La contraseña debe tener más de 8 caracteres y al menos 1 número.";
+                header("Location: altaUsuario.php");
             }
         } else {
             $smarty = new Smarty();
-            $_SESSION['mensaje'] = "Ya hay un usuario con ese correo.";
-            header("Location: altaUsuario.php");
+                $_SESSION['mensaje'] = "No es un correo válido.";
+                header("Location: altaUsuario.php");
         }
     } else {
         echo "Error de Consulta " . $conn->ultimoError();

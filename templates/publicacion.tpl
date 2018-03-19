@@ -24,12 +24,12 @@
                             </tr>
                             <tr>                            
                                 {if $publi['tipo'] eq "E"}
-                                    <td>Encontrado</td>
+                                    <td>Tipo publicacion: Encontrado</td>
                                 {else}
-                                    <td>Perdido</td>
+                                    <td>Tipo publicacion: Perdido</td>
                                 {/if}
-                                <td>{$publi['especie']}</td>
-                                <td>{$publi['raza']}</td>
+                                <td>Animal: {$publi['especie']}</td>
+                                <td>Raza: {$publi['raza']}</td>
                                 <td>en: {$publi['barrio']}</td>
                             </tr>
                             <tr>

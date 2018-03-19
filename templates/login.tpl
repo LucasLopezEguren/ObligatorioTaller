@@ -18,7 +18,7 @@
             </div>
             <br>
             <form method="post" action="procesoLogin.php">
-                Usuario: <input type="text" id="txtUsuario" name="txtUsuario" value="{$usuario}"/>
+                Usuario: <input type="text" id="txtUsuario" name="txtUsuario" value=""/>
                 <br/>
                 Clave: <input type="password" id="txtClave" name="txtClave"/>
                 <br/>
