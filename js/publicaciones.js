@@ -94,7 +94,8 @@ function traigoPublicaciones(pagina){
                 "&tipo=" + $("#cboxTipo").val() +
                 "&especie=" + $("#cboxEspecie").val() +
                 "&raza=" + $("#cboxRaza").val() +
-                "&barrio=" + $("#cboxBarrio").val(),
+                "&barrio=" + $("#cboxBarrio").val() +
+                "&cantXpagina=" + $("#cantXpagina").val(),
         success: cargoFilas
     });    
 }

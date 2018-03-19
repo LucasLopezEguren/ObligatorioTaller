@@ -46,6 +46,15 @@
                     <input type="button" value="SIGUIENTE" class="btnSIG">
                     <input type="button" value="ÚLTIMO" class="btnFIN">
                     <br>
+                    Ver de a: 
+                    <select id="cantXpagina">
+                        <option value="10">10</option>
+                        <option value="20" >20</option>
+                        <option value="50" >50</option>
+                        <option value="100" >todas</option>
+                    </select>
+                    publicaciones por página
+                    <br>
                     <table>                    
                         <thead>
                             <tr>
