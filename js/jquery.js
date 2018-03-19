@@ -1,10 +1,3 @@
-//Listas
-var empresas = [];
-var solicitudes = [];		  
-var usuarios = [];
-var largoUsr = 0;
-var largoSol = 0;
-
 $(document).ready(inicializo);
 
 function inicializo(){
@@ -20,8 +13,7 @@ $(".btn").mouseover(mouseIn);
 $(".btn").mouseout(mouseOut);
 }
 
-function regUsr () {
-	
+function regUsr () {	
 	var nombre = $('#usuNombre').val();
 	var apellido = $('#cvApellido').val();
 	var edad = parseInt($('#cvEdad').val());

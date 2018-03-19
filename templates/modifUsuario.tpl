@@ -7,11 +7,11 @@
     </head>
     <body>
         {include file="cabezal.tpl"}
-        
-        <div style="float: left">
-            {include file="menu.tpl"}
-        </div>
-        <div style="float: right; align-content: center">
+        <div id="cuerpo">
+            <div style="float: left">
+                {include file="menu.tpl"}
+            </div>
+            <div style="float: right; align-content: center">
                 <h1>Alta de Usuarios</h1>
                 <form method="POST" action="actualizoUsuario.php">
                     <input type="hidden" name="usuId" id="usuId" value="{$usuario['usuId']}">
@@ -23,6 +23,7 @@
                     <br>
                     <input type="submit" value="Modificar Usuario">
                 </form>
+            </div>
         </div>
     </body>
 </html>

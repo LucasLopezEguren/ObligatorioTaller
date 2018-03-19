@@ -42,7 +42,7 @@ if($conn->conectar()){
         else{
             $_SESSION['ingreso'] = false; 
             $_SESSION['mensaje'] = "Usuario o clave erronea!";
-            header("Location: index.php");
+            header("Location: login.php");
         }
     }
     else{
