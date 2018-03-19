@@ -26,9 +26,11 @@ if ($conn->conectar()) {
         $usuario = $conn->siguienteRegistro();
         $claveCorrecta = strlen($usuClave) > 7;
         $valCorreo = strpos($usuCorreo, '@');
+        $valCorreo2 = strpos($usuCorreo, '.');
         $claveTieneNum = preg_match('/\d/', $usuClave);
-        if ($valCorreo) {
-            if ($claveCorrecta && $claveTieneNum) {
+        $claveTieneLetra  = preg_match('/[a-zA-Z]/',$usuClave);
+        if ($valCorreo && $valCorreo2) {
+            if ($claveCorrecta && $claveTieneNum && $claveTieneLetra) {
                 if (empty($usuario)) {
                     //armo la SQL
                     $sql = "INSERT INTO Usuarios (nombre, email, password)";
@@ -55,7 +57,7 @@ if ($conn->conectar()) {
                 }
             } else {
                 $smarty = new Smarty();
-                $_SESSION['mensaje'] = "La contraseña debe tener más de 8 caracteres y al menos 1 número.";
+                $_SESSION['mensaje'] = "La contraseña debe tener más de 8 caracteres, al menos 1 letra y 1 número.";
                 header("Location: altaUsuario.php");
             }
         } else {
