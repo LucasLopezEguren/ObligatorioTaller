@@ -68,7 +68,6 @@
                 </table>
                 <input type="submit" value="Guardar">
             </form>
->>>>>>> d083a6564e8f8ffef189f6f6377193abd8f3f3b1
         </div>
     </body>
 </html>
