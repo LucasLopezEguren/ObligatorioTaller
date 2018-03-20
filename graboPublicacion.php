@@ -65,7 +65,7 @@ if ($conn->conectar()) {
 
         //    ejecuto la consulta
         if ($conn->consulta($sql, $parametros)) {
-            header("Location: admUsuarios.php");
+            header("Location: index.php");
         } else {
             echo "Error de Consulta de insersion: " . $conn->ultimoError();
         }

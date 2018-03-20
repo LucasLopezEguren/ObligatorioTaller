@@ -70,6 +70,10 @@
                             {/if}
                         {/foreach}
                     </table>
+                    <form action="verFotos.php">
+                    <input type="Submit" value="Ver fotos" />
+                    <input type="hidden" name="pubId" id="pubId" value="{$publi['id']}">
+                    </form>
                     {if $usuario eq $publi['email']}
                         <form action="editarPublicacion.php">
                             <input type="Submit" value="Editar" />

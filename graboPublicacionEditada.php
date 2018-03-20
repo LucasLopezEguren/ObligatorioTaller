@@ -49,7 +49,7 @@ if ($estado == "Reunido") {
 if ($conn->conectar()) {
     $sql1 = "SELECT id FROM Usuarios WHERE email = '" . $usuNom ."'";
     $parametros = array();
-    $parametros2 = array();
+    
         
     if($conn->consulta($sql1, $parametros)){
         $usuDatos= $conn->siguienteRegistro();
@@ -57,12 +57,12 @@ if ($conn->conectar()) {
     
         //armo la SQL
         $sql = "UPDATE Publicaciones SET titulo=:nom, descripcion=:desc, tipo=:est, especie_id=:espId,"
-                . "raza_id=:razaId, barrio_id=:barId, abierto=:abierto, usuario_id=:usuId, exitoso=:exitoso, pubFoto=:rutFoto WHERE id=$pubId";
+                . "raza_id=:razaId, barrio_id=:barId, abierto=:abierto, usuario_id=:usuId, exitoso=:exitoso WHERE id=$pubId";
         
 
-        $sql2 = "INSERT INTO Publicaciones_Fotos (id_publicacion, pubFoto) VALUES ($id, $foto)"
-                    . "ON DUPLICATE KEY UPDATE pubFoto = pubFoto";
+        $sql2 = "INSERT INTO Publicaciones_fotos (id_publicacion, pubFoto) VALUES (:id, :rutaFoto)";
         
+
         //cargo los parametros para la sql
         $parametros = array();
         $parametros[0] = array("nom", $pubNombre, "string");
@@ -74,20 +74,23 @@ if ($conn->conectar()) {
         $parametros[6] = array("abierto", $abierto, "int");
         $parametros[7] = array("usuId", $usuId, "int");
         $parametros[8] = array("exitoso", $exitoso, "int");
-        $parametros[9] = array("rutFoto", $foto, "string");
+//        $parametros[9] = array("rutFoto", $foto, "string");
 
 //        echo "<pre>";
 //        print_r($parametros);
 //        echo "<pre>";
         if($nuevaFoto==TRUE){
-            $parametros2[0] = array("id", $id, "int");
+            $parametros2 = array();
+            $parametros2[0] = array("id", $pubId, "int");
             $parametros2[1] = array("rutaFoto", $foto, "string");
-            $conn->consulta($sql2, $parametros2);
+            if($conn->consulta($sql2, $parametros2)){
+                echo "Error de Consulta de insersion" . $conn->ultimoError();
+            }
             
         }
 
         if ($conn->consulta($sql, $parametros)) {
-            header("Location: admUsuarios.php");
+            header("Location: index.php");
         } else {
             echo "Error de Consulta de insersion" . $conn->ultimoError();
         }
