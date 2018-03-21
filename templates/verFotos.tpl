@@ -15,7 +15,7 @@
             <h1>Ver Fotos</h1>
 
             <td>
-                {foreach from=$fotosSecundarias item=fotoSec}
+                {foreach from=$listaFotos item=fotoSec}
                     <img src='{$fotoSec['pubFoto']}' width="200px">
                 {/foreach}
             </td>
