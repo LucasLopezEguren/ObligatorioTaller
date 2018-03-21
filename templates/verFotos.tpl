@@ -14,9 +14,9 @@
         <div style="float: left; align-content: center">
             <h1>Ver Fotos</h1>
             
-            <td><img src='{$fotoPrincipal[0]['pubFoto']}'>
+            <td><img src='{$fotoPrincipal[0]['pubFoto']}' width="200px">
                 {foreach from=$fotosSecundarias item=fotoSec}
-                <img src='{$fotoSec['pubFoto']}'>
+                        <img src='{$fotoSec['pubFoto']}' width="200px">
                 {/foreach}
                 </td>
             </div>

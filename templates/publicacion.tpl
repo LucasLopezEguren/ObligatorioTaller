@@ -17,7 +17,9 @@
                     <table>
                         {foreach from=$publicacion item=publi}
                             <tr>
-                            <img src='{$publi['pubFoto']}'>
+                            <div width="200px">
+                                <img src='{$publi['pubFoto']}' width="200px">
+                            </div>
                             </tr>
                             <tr>
                                 <td colspan="4"><h3>{$publi['titulo']}</h3></td>                            
@@ -71,8 +73,8 @@
                         {/foreach}
                     </table>
                     <form action="verFotos.php">
-                    <input type="Submit" value="Ver fotos" />
-                    <input type="hidden" name="pubId" id="pubId" value="{$publi['id']}">
+                        <input type="Submit" value="Ver fotos" />
+                        <input type="hidden" name="pubId" id="pubId" value="{$publi['id']}">
                     </form>
                     {if $usuario eq $publi['email']}
                         <form action="editarPublicacion.php">

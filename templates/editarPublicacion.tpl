@@ -59,7 +59,7 @@
                     </tr>
                     <tr>
                         <td>Fotos: </td>
-                        <td><img src='{$publicacion[0]['pubFoto']}'></td>							
+                        <td><img src='{$publicacion[0]['pubFoto']}' width="200px"></td>							
                     </tr>
                     <tr>
                         <td>Agregar foto: </td>
