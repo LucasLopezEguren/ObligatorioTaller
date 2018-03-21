@@ -7,7 +7,7 @@ require_once("config/configuracion.php");
 require_once("includes/libs/Smarty.class.php");
 
 $conn = new ConexionBD(MOTOR, SERVIDOR, BASEDATOS, USUARIOBASE, CLAVEBASE);
-
+$cantXpagina = 1;
 if ($conn->conectar()) {
 
     $pubId = (int) $_POST['pubId'];
@@ -16,17 +16,22 @@ if ($conn->conectar()) {
         $pagina = 1;
     }
 
-
     $sql1 = "SELECT count(pubFoto) Total FROM Publicaciones_fotos WHERE id_publicacion=$pubId";
     $parametros = array();
+    
     if ($conn->consulta($sql1, $parametros)) {
         $fila = $conn->siguienteRegistro();
 
-        $cantPags = ceil($fila["Total"]);
+        $cantPags = $fila["Total"];
 
-        $inicio = ($pagina);
+        $inicio = ($pagina - 1) * $cantXpagina;
         $sql2 = "SELECT pubFoto FROM Publicaciones_fotos WHERE id_publicacion=$pubId";
-        $parametros2 = array();
+            $sql2 .= " LIMIT :ini, :cant";
+            
+        $parametros2 = array();        
+        $parametros2[0] = array("ini", $inicio, "int", 0);
+        $parametros2[1] = array("cant", $cantXpagina, "int", 0);
+        
         $respuesta = array();
 
         if ($conn->consulta($sql2, $parametros2)) {

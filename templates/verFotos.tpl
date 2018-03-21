@@ -14,7 +14,7 @@
         <div style="float: left; align-content: center">
             <h1>Ver Fotos</h1>
             <br>
-            <input type="hidden" name="pubId" id="pubId" value="{$pubId}">
+            <input type="hidden" name="pubIdFoto" id="pubIdFoto" value="{$pubId}">
             <input type="button" value="ANTERIOR" class="btnANT">
             <span id="pagActual"></span>
             <input type="button" value="SIGUIENTE" class="btnSIG">

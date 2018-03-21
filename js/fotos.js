@@ -16,7 +16,7 @@ function anteriorPagina(){
     else{
         pagina = ultPag;
     }
-    traigoPublicaciones(pagina);
+    traigoFotos(pagina);
 }
 
 function siguientePagina(){
@@ -26,7 +26,7 @@ function siguientePagina(){
     else{
         pagina = 1;
     }
-    traigoPublicaciones(pagina);
+    traigoFotos(pagina);
 }
 
 
@@ -39,17 +39,17 @@ function traigoFotos(pagina){
         url: "verFotos.php",
         type: "POST",
         dataType: "json",
-        data: "pagina=" + pagina + "&pubId=" + $("#pubId").val(),
+        data: "pagina=" + pagina + "&pubId=" + $("#pubIdFoto").val(),
         success: cargoFilas
     });    
 }
 
 function cargoFilas(datos){
     if(datos['estado'] == "OK"){
-        ultPag = datos['totPaginas'];
+        ultPag = datos["totPaginas"];
+        $("#pagActual").html("<b>" + pagina + "/" + ultPag + "</b>")
         fotos = datos["data"];
         largo = fotos.length;
-        $("#pagActual").html("<b>" + pagina + "/" + largo + "</b>")
         $("#vistaFotos").empty();
         fotos = datos["data"];
         largo = fotos.length;
@@ -62,6 +62,7 @@ function cargoFilas(datos){
             fila += "</tr>";
             $("#vistaFotos").append(fila);
         }
+        
     }
     else{
         alert(datos['mensaje']);

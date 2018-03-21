@@ -6,7 +6,7 @@ require_once("includes/libs/Smarty.class.php");
 require_once("includes/class.Conexion.BD.php");
 require_once("config/configuracion.php");
 
-$pubIds = (int) $_POST['pubId'];
+$pubIds = (int) $_GET['pubId'];
 $respuesta = array();
 $conn = new ConexionBD(MOTOR, SERVIDOR, BASEDATOS, USUARIOBASE, CLAVEBASE);
 if ($conn->conectar()) {
