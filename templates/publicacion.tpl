@@ -3,7 +3,7 @@
         <meta charset="UTF-8">
         <title>Mascotas APP</title>
         <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>            
-        <script type="text/javascript" src="js/admUsuarios.js"></script>            
+        <script type="text/javascript" src="js/fotos.js"></script>            
     </head>
     <body>
         {include file="cabezal.tpl"}
@@ -72,7 +72,7 @@
                             {/if}
                         {/foreach}
                     </table>
-                    <form action="verFotos.php">
+                    <form action="fotos.php">
                         <input type="Submit" value="Ver fotos" />
                         <input type="hidden" name="pubId" id="pubId" value="{$publi['id']}">
                     </form>
