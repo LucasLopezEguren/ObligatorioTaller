@@ -13,12 +13,12 @@
         </div>
         <div style="float: left; align-content: center">
             <h1>Ver Fotos</h1>
-            
-            <td><img src='{$fotoPrincipal[0]['pubFoto']}' width="200px">
+
+            <td>
                 {foreach from=$fotosSecundarias item=fotoSec}
-                        <img src='{$fotoSec['pubFoto']}' width="200px">
+                    <img src='{$fotoSec['pubFoto']}' width="200px">
                 {/foreach}
-                </td>
-            </div>
-        </body>
-    </html>
+            </td>
+        </div>
+    </body>
+</html>

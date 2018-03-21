@@ -39,13 +39,13 @@ if ($estado == "Encontrado") {
 
 //veo que puedo conectarme a la BD
 if ($conn->conectar()) {
-    $sql1 = "SELECT id FROM Usuarios WHERE email = '" . $usuNom ."'";
+    $sql1 = "SELECT id FROM Usuarios WHERE email = '" . $usuNom . "'";
     $parametros = array();
-        
-    if($conn->consulta($sql1, $parametros)){
-        $usuDatos= $conn->siguienteRegistro();
-        $usuId= (int)$usuDatos['id'];
-    
+
+    if ($conn->consulta($sql1, $parametros)) {
+        $usuDatos = $conn->siguienteRegistro();
+        $usuId = (int) $usuDatos['id'];
+
         //armo la SQL
         $sql = "INSERT INTO Publicaciones (titulo, descripcion, tipo, especie_id, raza_id, barrio_id, abierto, usuario_id, exitoso, pubFoto)";
         $sql .= " VALUES (:nom, :desc, :est, :espId, :razaId, :barId, :abierto, :usuId, :exitoso, :rutFoto)";
@@ -65,6 +65,22 @@ if ($conn->conectar()) {
 
         //    ejecuto la consulta
         if ($conn->consulta($sql, $parametros)) {
+
+            $sql2 = "SELECT id FROM Publicaciones WHERE pubFoto = '" . $foto . "'";
+            $parametros2 = array();
+            if ($conn->consulta($sql2, $parametros2)) {
+                $id = $conn->siguienteRegistro();
+                $id1 = (int) $id['id'];
+                print_r($id1);
+
+                $sql3 = "INSERT INTO Publicaciones_fotos (id_publicacion, pubFoto) "
+                        . "VALUES (:id, :rutaFoto)";
+
+                $parametros3 = array();
+                $parametros3[0] = array("id", $id1, "int");
+                $parametros3[1] = array("rutaFoto", $foto, "string");
+                $conn->consulta($sql3, $parametros3);
+            }
             header("Location: index.php");
         } else {
             echo "Error de Consulta de insersion: " . $conn->ultimoError();
