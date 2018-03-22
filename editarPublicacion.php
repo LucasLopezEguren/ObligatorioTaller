@@ -27,20 +27,6 @@ if ($conn->conectar()) {
         $publicacion = $conn->restantesRegistros();
     }
 
-    $sql2 = "SELECT * FROM Especies ORDER BY nombre";
-    $sql3 = "SELECT * FROM Barrios ORDER BY nombre";
-
-    $parametros2 = array();
-    $parametros3 = array();
-
-    if ($conn->consulta($sql2, $parametros2)) {
-
-        $listadoEspecies = $conn->restantesRegistros();
-
-        if ($conn->consulta($sql3, $parametros3)) {
-
-            $listadoBarrios = $conn->restantesRegistros();
-        }
 
         $smarty = new Smarty();
 
@@ -48,8 +34,6 @@ if ($conn->conectar()) {
         $smarty->template_dir = "templates";
         $smarty->compile_dir = "templates_c";
 
-        $smarty->assign("especies", $listadoEspecies);
-        $smarty->assign("barrios", $listadoBarrios);
         $smarty->assign("usuario", $_SESSION['usuario']);
         $smarty->assign("publicacion", $publicacion);
         $smarty->display("editarPublicacion.tpl");
@@ -59,4 +43,3 @@ if ($conn->conectar()) {
 //print_r($publicacion);
 //echo "<pre>";
     }
-}
