@@ -28,7 +28,7 @@ if ($conn->conectar()) {
         $valCorreo = strpos($usuCorreo, '@');
         $valCorreo2 = strpos($usuCorreo, '.');
         $claveTieneNum = preg_match('/\d/', $usuClave);
-        $claveTieneLetra  = preg_match('/[a-zA-Z]/',$usuClave);
+        $claveTieneLetra = preg_match('/[a-zA-Z]/', $usuClave);
         if ($valCorreo && $valCorreo2) {
             if ($claveCorrecta && $claveTieneNum && $claveTieneLetra) {
                 if (empty($usuario)) {
@@ -62,8 +62,8 @@ if ($conn->conectar()) {
             }
         } else {
             $smarty = new Smarty();
-                $_SESSION['mensaje'] = "No es un correo válido.";
-                header("Location: altaUsuario.php");
+            $_SESSION['mensaje'] = "No es un correo válido.";
+            header("Location: altaUsuario.php");
         }
     } else {
         echo "Error de Consulta " . $conn->ultimoError();

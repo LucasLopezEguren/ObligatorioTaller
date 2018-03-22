@@ -6,6 +6,8 @@ require_once("includes/libs/Smarty.class.php");
 require_once("includes/class.Conexion.BD.php");
 require_once("config/configuracion.php");
 
+$mensaje = $_SESSION['mensaje'];
+
 if (!$_SESSION['ingreso']) {
     $_SESSION['mensaje'] = "Debe registrarse para acceder al área privada";
     header("Location: index.php");
@@ -35,6 +37,7 @@ if (!$_SESSION['ingreso']) {
                 $smarty->assign("usuario",$_SESSION['usuario']);
                 $smarty->assign("especies", $listadoEspecies);
                 $smarty->assign("barrios", $listadoBarrios);
+                $smarty->assign("mensaje", $mensaje);
 
                 $smarty->display("nuevaPublicacion.tpl");
             }

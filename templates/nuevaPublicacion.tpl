@@ -69,7 +69,9 @@
                     </table>
                     <input type="submit" value="Publicar">
                 </form>
+                <div class="error">{$mensaje}</div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>
