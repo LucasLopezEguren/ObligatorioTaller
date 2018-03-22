@@ -52,6 +52,8 @@
                 </table>
                 <input type="submit" value="Guardar">
             </form>
+                                    <div class="error">{$mensaje}</div>
+            </div>
         </div>
     </body>
 </html>

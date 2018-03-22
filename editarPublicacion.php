@@ -7,6 +7,7 @@ require_once("includes/class.Conexion.BD.php");
 require_once("config/configuracion.php");
 
 $conn = new ConexionBD(MOTOR, SERVIDOR, BASEDATOS, USUARIOBASE, CLAVEBASE);
+$mensaje = $_SESSION['mensaje'];
 
 $pubId = (int) $_REQUEST['pubId'];
 
@@ -36,6 +37,7 @@ if ($conn->conectar()) {
 
         $smarty->assign("usuario", $_SESSION['usuario']);
         $smarty->assign("publicacion", $publicacion);
+        $smarty->assign("mensaje", $mensaje);
         $smarty->display("editarPublicacion.tpl");
 
 

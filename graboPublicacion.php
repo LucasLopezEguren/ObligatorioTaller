@@ -6,12 +6,7 @@ require_once("includes/class.Conexion.BD.php");
 require_once("config/configuracion.php");
 require_once("includes/libs/Smarty.class.php");
 
-$extensiones = array('gif', 'png', 'jpg');
-//$filename = $_FILES['video_file']['name'];
-//$ext = pathinfo($filename, PATHINFO_EXTENSION);
-//if(!in_array($ext,$extensiones) ) {
-//    echo 'error';
-//}
+$extensiones = array('gif', 'png', 'jpg', 'jpeg');
 
 if (is_uploaded_file($_FILES['foto']['tmp_name'])) {
     $nuevoNombre = "fotos/" . date("YmdHis") . "_" . ($_FILES['foto']['name']);
