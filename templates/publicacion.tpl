@@ -82,6 +82,10 @@
                             <input type="hidden" name="pubId" id="pubId" value="{$publi['id']}">
                         </form>
                     {/if}
+                    <form action="pdfCreador.php">
+                        <input type="Submit" value="Exportar a PDF" />
+                        <input type="hidden" name="pubId" id="pubId" value="{$publi['id']}">
+                    </form>
                 </div>
             </div>
         </div>            
