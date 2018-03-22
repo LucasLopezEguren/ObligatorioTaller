@@ -29,7 +29,7 @@
                     </tr>
                     <tr>
                         <td>Estado:</td>
-                        <td><input type="radio" id="Reunido" name="Estado" value="Reunido"/>Reunido con dueño</td>
+                        <td><input type="checkbox" id="Reunido" name="Estado" value="Reunido"/>Reunido con dueño</td>
                     </tr>
                     <tr>
                         <td><div id="errEstado" class="mensaje"></br></div></td>
@@ -40,22 +40,6 @@
                     </tr>
                     <tr>
                         <td><div id="errusuCorreo" class="mensaje"></br></div></td>
-                    </tr>
-                    <tr>
-                        <td>Especie: <select id="especies" name="especies">
-                                {foreach from=$especies item=especie}
-                                    <option value="{$especie['id']}" {if $especie['id'] eq 0}selected="selected"{/if}>{$especie['nombre']}</option>
-                                {/foreach}
-                            </select></td>
-                        <td>Raza: <select id="razas" name="razas">
-                                <selected value="Seleccione Especie"</option>
-                            </select>   
-                    </tr>
-                    <tr>
-                        <td>Barrio: <select id="barrio" name="barrio" value="{$publicacion[0]['barrio']}">
-                                {foreach from=$barrios item=barrio}
-                                    <option value="{$barrio['id']}" {if $barrio['id'] eq 0}selected="selected"{/if}>{$barrio['nombre']}</option>
-                            {/foreach}</td> 							
                     </tr>
                     <tr>
                         <td>Fotos: </td>

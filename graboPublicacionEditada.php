@@ -30,15 +30,12 @@ $conn = new ConexionBD(MOTOR, SERVIDOR, BASEDATOS, USUARIOBASE, CLAVEBASE);
 $usuNom = $_SESSION['usuario'];
 
 $pubNombre = $_POST['pubNombre'];
-$estado = $_POST['Estado'];
+$estado = isset($_POST['Estado']);
 $pubDesc = $_POST['pubDesc'];
-$espId = (int) $_POST['especies'];
-$razaId = (int) $_POST['razas'];
-$barrio = $_POST['barrio'];
 $exitoso = NULL;
 $abierto = 1;
 
-if ($estado == "Reunido") {
+if ($estado == TRUE) {
     $estado = "E";
     $exitoso = 0;
     $abierto = 0;
@@ -56,8 +53,8 @@ if ($conn->conectar()) {
         $usuId= (int)$usuDatos['id'];
     
         //armo la SQL
-        $sql = "UPDATE Publicaciones SET titulo=:nom, descripcion=:desc, tipo=:est, especie_id=:espId,"
-                . "raza_id=:razaId, barrio_id=:barId, abierto=:abierto, usuario_id=:usuId, exitoso=:exitoso WHERE id=$pubId";
+        $sql = "UPDATE Publicaciones SET titulo=:nom, descripcion=:desc, tipo=:est,"
+                . "abierto=:abierto, usuario_id=:usuId, exitoso=:exitoso WHERE id=$pubId";
         
 
         $sql2 = "INSERT INTO Publicaciones_fotos (id_publicacion, pubFoto) VALUES (:id, :rutaFoto)";
@@ -68,9 +65,6 @@ if ($conn->conectar()) {
         $parametros[0] = array("nom", $pubNombre, "string");
         $parametros[1] = array("desc", $pubDesc, "string");
         $parametros[2] = array("est", $estado, "string");
-        $parametros[3] = array("espId", $espId, "int");
-        $parametros[4] = array("razaId", $razaId, "int");
-        $parametros[5] = array("barId", $barrio, "int");
         $parametros[6] = array("abierto", $abierto, "int");
         $parametros[7] = array("usuId", $usuId, "int");
         $parametros[8] = array("exitoso", $exitoso, "int");
